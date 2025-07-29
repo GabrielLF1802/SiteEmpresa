@@ -1,0 +1,89 @@
+** Controle de Estoque ** 
+
+-- Funcionalidades -- 
+
+- Adicionar estoque
+- Remover estoque
+- Editar estoque
+- Carrinho ( armazenar produtos ) 
+- Organização por A-Z 
+- Organização por valor 
+- LocalStorage ( preferências e carrinho)
+
+
+
+
+- API com preço e imagem externo de produtos -> API Mercado livre
+- Produtos API + Produtos Loja ( adicionados manualmente )
+
+
+
+-- Gráficos -- ( ADMIN )
+
+- Quantidade de produtos vendidos
+- Alerta de fim de estoque
+- Rentabilidade do produto -> margem de lucro ( venda - custo )
+- 
+
+
+
+
+
+
+
+
+
+// ADMIN 
+
+
+
+
+// Futuramente
+- Confirmação de compra
+- Cadastro de endereço de entrega 
+- Métodos de pagamento 
+
+
+
+
+ESTRUTURAÇÃO 
+- Config 
+    auth
+    db
+
+- Models
+    usuario
+    produtos
+
+
+- views
+    - layouts
+        main.handlebars
+    - partials
+        navbar.handlebars
+        footer.handlebars
+    - usuario
+        carrinho
+        home ( produtos loja )
+        home2 ( produtos API )
+        produtos
+        login
+        registro
+    - admin
+        addproduto
+        gerenciarprodutos
+        dadoslucro
+
+- helpers
+
+- public 
+
+- routes
+    usuario
+    admin
+
+- app.js
+
+
+
+
