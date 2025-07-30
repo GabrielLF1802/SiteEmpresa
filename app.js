@@ -9,6 +9,7 @@ const flash = require('connect-flash')
 const mongoose = require('mongoose')
 const app= express()
 const db = require('./config/db')
+const usuario= require('./routes/user')
 
 // Configs 
     // Session
@@ -44,7 +45,7 @@ const db = require('./config/db')
     // Mongoose
         mongoose.Promise= global.Promise
         mongoose.connect(db.mongoURI).then(() => {
-            console.log('Conectado ao mongo')
+            console.log('Connected to Mongodb')
         }).catch((erro)=>{
             console.log('Falha ao conectar' + erro)
         })
@@ -54,6 +55,10 @@ const db = require('./config/db')
 app.get('/',(req,res)=>{
     res.render('home')
 })
+    // Usuários     
+        app.use('/user',usuario)
+        
+    // Admin
 
 
     
