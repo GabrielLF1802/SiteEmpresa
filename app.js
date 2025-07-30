@@ -52,12 +52,9 @@ const usuario= require('./routes/user')
 
 // Rotas
 
-app.get('/',(req,res)=>{
-    res.render('home')
-})
     // Usuários     
         app.use('/user',usuario)
-        
+
     // Admin
 
 
