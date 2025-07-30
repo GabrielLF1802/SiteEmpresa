@@ -15,6 +15,25 @@ router.get('/',(req,res)=>{
 router.get('/register',(req,res)=>{
     res.render('user/register')
 })
+router.post('/register',(req,res)=>{
+    // Possíveis Erros
+
+
+    const newUser = new Usuario({
+        nome: req.body.nome,
+        email:req.body.email,
+        nasc: req.body.nasc,
+        senha: req.body.senha
+    })
+    newUser.save().then(()=>{
+        req.flash('success_msg','Sucesso ao registrar o novo usuário')
+        res.redirect('/user/')
+        
+    }).catch(()=>{
+        req.flash('error_msg','Erro ao registrar novo usuário')
+        res.redirect('/user/')
+    })
+})
 
 
 

@@ -18,6 +18,8 @@ const usuario= require('./routes/user')
         resave:true,
         saveUninitialized:true
     }))
+    // Flash
+    app.use(flash());
     
     // Handlebars
     app.engine('handlebars', engine({defaultLayout:'main',runtimeOptions: {
@@ -26,8 +28,6 @@ const usuario= require('./routes/user')
   }}))
     app.set('view engine', 'handlebars')
 
-    // Flash
-        app.use(flash());
     
     // Middleware
     app.use((req,res,next)=>{
@@ -35,10 +35,11 @@ const usuario= require('./routes/user')
         res.locals.error_msg= req.flash('error_msg')
         res.locals.error= req.flash('error')
         res.locals.user= req.user || null
+        
         next()
     })
     // Body-parser
-        app.use(bodyParser.urlencoded({extended:false}))
+        app.use(bodyParser.urlencoded({extended:true}))
         app.use(bodyParser.json())
     // Public
         app.use(express.static(path.join(__dirname,'public')))
