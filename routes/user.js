@@ -3,6 +3,7 @@ const router = express.Router()
 const mongoose= require('mongoose')
 require('../models/user')
 const Usuario = mongoose.model('usuarios')
+const bcrypt= require('bcryptjs')
 
 
 // Routes Usuário
@@ -50,16 +51,28 @@ router.post('/register',(req,res)=>{
                     nasc: req.body.nasc,
                     senha: req.body.senha
                 })
-                newUser.save().then(()=>{
-                    req.flash('success_msg','Sucesso ao registrar o novo usuário')
-                    res.redirect('/user/')
-                    
-                }).catch(()=>{
-                    req.flash('error_msg','Erro ao registrar novo usuário')
-                    res.redirect('/user/')
+                bcrypt.genSalt(10,(erro, salt)=>{
+                    bcrypt.hash(newUser.senha, salt, (erro, hash)=>{
+                        if(erro){
+                            req.flash('error_msg','Erro ao registrar')
+                            res.redirect('/user/register')
+                        }
+                        newUser.senha= hash
+                        newUser.save().then(()=>{
+                            req.flash('success_msg','Sucesso ao registrar o novo usuário')
+                            res.redirect('/user/')
+                            
+                        }).catch(()=>{
+                            req.flash('error_msg','Erro ao registrar novo usuário')
+                            res.redirect('/user/register')
+                        })
+                    })
                 })
             }
 
+        }).catch((err)=>{
+            req.flash('error_msg','Erro ao registrar novo user')
+            res.redirect('/user/register')
         })
     }
 
@@ -72,6 +85,9 @@ router.post('/register',(req,res)=>{
 // Login 
 router.get('/login',(req,res)=>{
     res.render('user/login')
+})
+router.post('/login',(req,res)=>{
+
 })
 
 
