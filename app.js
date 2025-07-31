@@ -1,15 +1,20 @@
 // Imports
-
 const express = require('express')
-const session= require('express-session')
 const bodyParser= require('body-parser')
 const {engine} = require('express-handlebars')
-const path = require('path')
-const flash = require('connect-flash')
-const mongoose = require('mongoose')
 const app= express()
+const path = require('path')
+const session= require('express-session')
+const flash = require('connect-flash')
+// DB
+const mongoose = require('mongoose')
 const db = require('./config/db')
 const usuario= require('./routes/user')
+// Authenticate
+const passport= require('passport')
+require('./config/auth')(passport)
+
+
 
 // Configs 
     // Session
@@ -50,6 +55,7 @@ const usuario= require('./routes/user')
         }).catch((erro)=>{
             console.log('Falha ao conectar' + erro)
         })
+
 
 // Rotas
 

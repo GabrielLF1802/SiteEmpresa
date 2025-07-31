@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/GabrielLF1802/SiteEmpresa#readme",
   "dependencies": {
+    "@tailwindcss/cli": "^4.1.11",
     "bcryptjs": "^3.0.2",
     "body-parser": "^2.2.0",
     "connect-flash": "^0.1.1",
@@ -26,6 +27,7 @@
     "express-session": "^1.18.2",
     "mongoose": "^8.17.0",
     "passport": "^0.7.0",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "tailwindcss": "^4.1.11"
   }
 }

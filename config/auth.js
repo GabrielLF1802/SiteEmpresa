@@ -8,7 +8,7 @@ const Usuario= mongoose.model('usuarios')
 
 // Authenticate 
 
-momdule.exports= function(passport){
+module.exports= function(passport){
     passport.use(
         new LocalStrategy({usernameField:'email', passwordField:'senha'},(email,senha,done)=>{
             Usuario.findOne({email:email}).then((usuario)=>{
@@ -29,7 +29,7 @@ momdule.exports= function(passport){
     passport.serializeUser((usuario,done)=>{
         done(null,usuario.id)
     })
-    passport.desirializeUser((id,done)=>{
+    passport.deserializeUser((id,done)=>{
         Usuario.findById(id).then((usuario)=>{
             done(null,usuario)
         }).catch((err)=>{
