@@ -1,3 +1,11 @@
+{{#if erros}}
+    {{#each erros}}
+    <div>
+        {{texto}}
+    </div>
+    {{/each}}
+{{/if}}
+
 <form action="/user/register" method="POST">
     <main>
         <div>
@@ -15,6 +23,10 @@
         <div>
             <input type="password" id="senha" name="senha">
             <label for="senha">Senha:</label>
+        </div>
+        <div>
+            <input type="passowrd" name="senha2">
+            <label for="senha2">Digite a sua senha novamente:</label>
         </div>
         <button>Register</button>
     </main>
