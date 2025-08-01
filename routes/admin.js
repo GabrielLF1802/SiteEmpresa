@@ -18,6 +18,15 @@ router.post('/newproduct',(req,res)=>{
     newProduct.RegisterProduct(req,res)
 })
 
+// Routes List Products
+
+router.get('/products',(req,res)=>{
+    newProduct.ListProducts(req,res)
+})
+
+
+
+
 
 
 

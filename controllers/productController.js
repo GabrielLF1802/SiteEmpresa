@@ -48,6 +48,16 @@ class newProduct{
         return erros
         
     }
+    async ListProducts(req,res){
+        try{
+            const products = await Product.find()
+            return res.render('admin/products',{products:products})
+        }catch(err){
+            console.log('Erro ao listar os produtos')
+            req.flash('error_msg','Erro ao listar os produtos')
+            res.render('home')
+        }
+    }
 }
 
 module.exports= new newProduct()
