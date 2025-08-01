@@ -4,15 +4,15 @@ const Schema= mongoose.Schema
 
 const Product= new Schema({
     nome:{
-        typeof:String,
+        type:String,
         required:true
     },
     desc:{
-        typeof:String,
+        type:String,
         required:true
     },
     valor:{
-        typeof:Number,
+        type:Number,
         required:true
     }
 })
