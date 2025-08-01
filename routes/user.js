@@ -28,10 +28,6 @@ router.post('/register',(req,res)=>{
     UserController.register(req,res)
 })
 
-
-
-
-
 // Login 
 router.get('/login',(req,res)=>{
     res.render('user/login')

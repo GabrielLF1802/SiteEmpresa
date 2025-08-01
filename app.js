@@ -9,7 +9,9 @@ const flash = require('connect-flash')
 // DB
 const mongoose = require('mongoose')
 const db = require('./config/db')
+// Routes
 const usuario= require('./routes/user')
+const admin= require('./routes/admin')
 // Authenticate
 const passport= require('passport')
 require('./config/auth')(passport)
@@ -63,9 +65,9 @@ require('./config/auth')(passport)
         app.use('/user',usuario)
 
     // Admin
+        app.use('/admin',admin)
 
 
-    
 
 
 
