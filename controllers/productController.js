@@ -4,7 +4,7 @@ require('../models/product')
 const Product= mongoose.model('products')
 
 
-class newProduct{
+class ProductController{
     async RegisterProduct(req,res){
         const erros = this.VerifErros(req.body)
         if(erros.length>0){
@@ -60,4 +60,4 @@ class newProduct{
     }
 }
 
-module.exports= new newProduct()
+module.exports= new ProductController()

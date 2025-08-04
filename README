@@ -2,13 +2,14 @@
 
 -- Funcionalidades -- 
 
-- Adicionar estoque
-- Remover estoque
+- Adicionar estoque --
+- Remover estoque 
 - Editar estoque
+- Listagem de estoque -- 
 - Carrinho ( armazenar produtos ) 
 - Organização por A-Z 
 - Organização por valor 
-- LocalStorage ( preferências e carrinho)
+- LocalStorage ( preferências e carrinho) 
 
 
 
