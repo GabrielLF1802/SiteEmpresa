@@ -19,7 +19,8 @@ class ProductController{
             const newProduct = new Product({
                 nome:req.body.nome,
                 desc:req.body.desc,
-                valor:req.body.valor
+                valor:req.body.valor,
+                quant:req.body.quant
             })
             await newProduct.save()
             console.log('Sucesso ao salvar novo produto')
@@ -38,10 +39,13 @@ class ProductController{
         if(!data.desc||data.desc==undefined||data.desc==null){
             erros.push({texto:'Descrição inválida'})
         }
+        if(!data.quant||data.quant==undefined||data.quant==null){
+            erros.push({texto:'Quantidade inválida'})
+        }
         if(!data.valor||data.valor==undefined||data.valor==null){
             erros.push({texto:'Valor inválido'})
             }else{
-        if(data.valor<=0){
+        if(data.valor<=0||data.quant<0){
             erros.push({texto:'Não pode haver um valor negativo'})
         }
         }
@@ -79,7 +83,8 @@ class ProductController{
             if(ProductExis){
                 ProductExis.nome=req.body.nome,
                 ProductExis.desc= req.body.desc,
-                ProductExis.valor= req.body.valor
+                ProductExis.valor= req.body.valor,
+                ProductExis.quant= req.body.quant
 
                 await ProductExis.save().then(()=>{
                     req.flash('success_msg','Produto Atualizado')

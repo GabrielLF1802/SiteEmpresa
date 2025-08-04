@@ -14,6 +14,10 @@ const Product= new Schema({
     valor:{
         type:Number,
         required:true
+    },
+    quant:{
+        type:Number,
+        default:0
     }
 })
 mongoose.model('products', Product)
