@@ -24,10 +24,10 @@ class ProductController{
             await newProduct.save()
             console.log('Sucesso ao salvar novo produto')
             req.flash('success_msg','Sucesso ao salvar novo produto')
-            res.render('admin/newproduct')
+            res.redirect('/admin/newproduct')
         }catch(err){
             req.flash('error_msg','Erro ao salvar novo produto')
-            res.render('admin/newproduct')
+            res.redirect('/admin/newproduct')
         }
     }
     VerifErros(data){

@@ -28,7 +28,7 @@ router.get('/products/edit/:id',(req,res)=>{
         res.render('admin/editproduct',{product:product})
     }).catch((err)=>{
         req.flash('error_msg','Produto não encontrado')
-        res.render('admin/products')
+        res.redirect('/admin/products')
     })
 })
 
@@ -41,17 +41,27 @@ router.post('/products/edit',(req,res)=>{
         product.save().then(()=>{
             req.flash('success_msg','Produto atualizado!')
             console.log('Produto atualizado com sucesso')
-            res.render('admin/products')
+            res.redirect('/admin/products')
         }).catch((err)=>{
             req.flash('error_msg','Erro ao atualizar o produto')
-            res.render('admin/products')
+            res.redirect('/admin/products')
         })
     }).catch((err)=>{
         req.flash('error_msg',`Erro ${err}`)
-        res.render('admin/products')
+        res.redirect('/admin/products')
     })
 
 
+})
+
+router.post('/products/delet',(req,res)=>{
+    Product.deleteOne({_id:req.body.id}).then(()=>{
+        req.flash('success_msg','Produto Deletado')
+        res.redirect('/admin/products')
+    }).catch((err)=>{
+        req.flash('error_msg','Erro ao apagar produto')
+        res.redirect('/admin/products')
+    })
 })
 
 

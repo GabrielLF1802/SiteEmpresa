@@ -7,4 +7,15 @@
 
 <a href="/admin/products/edit/{{_id}}"><button>Edit</button></a>
 
+<form action="/admin/products/delet" method="POST">
+    <input type="hidden" name="id" value="{{_id}}">
+    <a href="/admin"><button>Delet</button></a>
+    
+</form>
+
+{{else}}
+
+<h1>Nenhum produto encontrado</h1>
+
+
 {{/each}}
