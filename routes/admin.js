@@ -24,45 +24,23 @@ router.get('/products',(req,res)=>{
     ProductController.ListProducts(req,res)
 })
 router.get('/products/edit/:id',(req,res)=>{
-    Product.findOne({_id:req.params.id}).then((product)=>{
-        res.render('admin/editproduct',{product:product})
-    }).catch((err)=>{
-        req.flash('error_msg','Produto não encontrado')
-        res.redirect('/admin/products')
-    })
+    ProductController.EditProduct(req,res)    
 })
+
+
 
 router.post('/products/edit',(req,res)=>{
-    Product.findOne({_id:req.body.id}).then((product)=>{
-        product.nome= req.body.nome,
-        product.desc= req.body.desc,
-        product.valor= req.body.valor
-
-        product.save().then(()=>{
-            req.flash('success_msg','Produto atualizado!')
-            console.log('Produto atualizado com sucesso')
-            res.redirect('/admin/products')
-        }).catch((err)=>{
-            req.flash('error_msg','Erro ao atualizar o produto')
-            res.redirect('/admin/products')
-        })
-    }).catch((err)=>{
-        req.flash('error_msg',`Erro ${err}`)
-        res.redirect('/admin/products')
-    })
-
-
+    ProductController.SaveEdit(req,res)
 })
+
+
+
 
 router.post('/products/delet',(req,res)=>{
-    Product.deleteOne({_id:req.body.id}).then(()=>{
-        req.flash('success_msg','Produto Deletado')
-        res.redirect('/admin/products')
-    }).catch((err)=>{
-        req.flash('error_msg','Erro ao apagar produto')
-        res.redirect('/admin/products')
-    })
+    ProductController.DeletProduct(req,res)
 })
+
+
 
 
 

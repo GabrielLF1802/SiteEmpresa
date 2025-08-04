@@ -58,6 +58,56 @@ class ProductController{
             res.render('home')
         }
     }
+
+
+    async EditProduct (req,res) {
+    const product = await Product.findOne({_id:req.params.id})
+    try{
+        if(product){
+            return res.render('admin/editproduct',{product:product})
+        }
+    }catch{     
+            req.flash('error_msg','Produto não encontrado')
+            res.redirect('/admin/products')
+        }
+}
+
+
+    async SaveEdit(req,res){
+        try{
+            const ProductExis= await Product.findOne({_id:req.body.id})
+            if(ProductExis){
+                ProductExis.nome=req.body.nome,
+                ProductExis.desc= req.body.desc,
+                ProductExis.valor= req.body.valor
+
+                await ProductExis.save().then(()=>{
+                    req.flash('success_msg','Produto Atualizado')
+                    res.redirect('/admin/products')
+                    console.log('Produto alterado com sucesso!')
+                }).catch((err)=>{
+                    req.flash('error_msg','Falha ao alterar o produto')
+                    res.redirect('/admin/products')
+                })
+            }
+        }catch(err){
+            req.flash('error_msg',`Erro ${err}`)
+            res.redirect('/admin/products')
+        }
+
+    }
+
+    async DeletProduct(req,res){
+
+    try{
+        await Product.deleteOne({_id:req.body.id})
+        req.flash('success_msg','Produto deletado!')
+        res.redirect('/admin/products')
+    }catch{
+        req.flash('error_msg','Erro ao deletar produto')
+        res.redirect('/admin/products')
+    }
+}
 }
 
 module.exports= new ProductController()
