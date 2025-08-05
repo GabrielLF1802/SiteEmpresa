@@ -46,15 +46,15 @@
         <!-- Dropdown menu -->
         <div id="user-dropdown" class="absolute right-0 mt-2 hidden w-48 z-50 bg-white divide-y divide-gray-100 rounded-lg shadow-lg dark:bg-gray-700 dark:divide-gray-600">
           <div class="px-4 py-3">
-            <span class="block text-sm text-gray-900 dark:text-white">Bonnie Green</span>
-            <span class="block text-sm text-gray-500 truncate dark:text-gray-400">name@flowbite.com</span>
+            <span class="block text-sm text-gray-900 dark:text-white">{{#if user}}{{user.nome}}{{else}}Usuário{{/if}}</span>
+            <span class="block text-sm text-gray-500 truncate dark:text-gray-400">{{#if user}}{{user.email}}{{else}}name@email.com{{/if}}</span>
           </div>
           <ul class="py-2" aria-labelledby="user-menu-button">
 
             {{#if user}}
               <li><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white">Perfil</a></li>
               <li><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white">Config</a></li>
-              <li><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white">Sair</a></li>
+              <li><a href="/user/logout" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white">Sair</a></li>
             {{else}}
               
               <li><a href="/user/login" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white">Entrar</a></li>

@@ -41,6 +41,13 @@ router.post('/login',(req,res,next)=>{
     })(req,res,next)
 })
 
+// Logout
+
+router.get('/logout',(req,res,next)=>{
+    UserController.Sair(req,res,next)
+})
+
+
 
 
 module.exports= router

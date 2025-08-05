@@ -63,6 +63,15 @@ class UserController{
         const hash= await bcrypt.hash(senha,salt)
         return hash
     }
+    async Sair(req,res,next){
+    await req.logout(function(err){
+        if(err){
+            return next(err)
+        }
+        req.flash('success_msg','Deslogado com sucesso!')
+        res.redirect('/user/')
+    })
+}
 
 }
 module.exports= new UserController()
