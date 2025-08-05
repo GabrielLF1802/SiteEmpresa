@@ -25,6 +25,9 @@ require('./config/auth')(passport)
         resave:true,
         saveUninitialized:true
     }))
+
+    app.use(passport.initialize());
+    app.use(passport.session())
     // Flash
     app.use(flash());
     
@@ -42,7 +45,6 @@ require('./config/auth')(passport)
         res.locals.error_msg= req.flash('error_msg')
         res.locals.error= req.flash('error')
         res.locals.user= req.user || null
-        
         next()
     })
     // Body-parser

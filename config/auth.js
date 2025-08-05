@@ -11,13 +11,14 @@ const Usuario= mongoose.model('usuarios')
 module.exports= function(passport){
     passport.use(
         new LocalStrategy({usernameField:'email', passwordField:'senha'},(email,senha,done)=>{
-            Usuario.findOne({email:email}).then((usuario)=>{
-                if(!usuario){
+            Usuario.findOne({email:email}).then((user)=>{
+                if(!user){
                     return done(null,false,{message:"Usuário não cadastrado"})
                 }
-                bcrypt.compare(senha, usuario.senha, (erro,batem)=>{
+                bcrypt.compare(senha, user.senha, (erro,batem)=>{
                     if(batem){
-                        return done(null,usuario)
+                        console.log('Logado')
+                        return done(null,user)
                     }else{
                         return done(null,false,{message:'Senha incorreta'})
                     }
@@ -26,12 +27,12 @@ module.exports= function(passport){
             })
         })
     )
-    passport.serializeUser((usuario,done)=>{
-        done(null,usuario.id)
+    passport.serializeUser((user,done)=>{
+        done(null,user.id)
     })
     passport.deserializeUser((id,done)=>{
-        Usuario.findById(id).then((usuario)=>{
-            done(null,usuario)
+        Usuario.findById(id).then((user)=>{
+            done(null,user)
         }).catch((err)=>{
             done(err)
         })
