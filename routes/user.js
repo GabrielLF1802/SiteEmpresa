@@ -7,6 +7,7 @@ require('../models/user')
 const Usuario = mongoose.model('usuarios')
 const bcrypt= require('bcryptjs')
 const passport= require('passport')
+const axios= require('axios')
 
 // Controllers
 const UserController= require('../controllers/userController')
@@ -14,9 +15,30 @@ const UserController= require('../controllers/userController')
 
 // Routes Usuário
 
-router.get('/',(req,res)=>{
-    res.render('home')
-})
+router.get('/', async (req,res)=>{
+    const termo = 'celular';
+
+    try {
+        const resposta = await axios.get(`https://api.mercadolibre.com/sites/MLB/search?q=${termo}`);
+        const produtos = resposta.data.results;
+
+        produtos.forEach(produto => {
+            console.log('Título:', produto.title);
+            console.log('Preço:', produto.price);
+            console.log('Imagem:', produto.thumbnail);
+            console.log('Link:', produto.permalink);
+            console.log('---');
+        });
+
+        // Se quiser exibir no Handlebars:
+        res.render('home', { produtos });
+
+    } catch (err) {
+        console.error('Erro ao buscar produtos:', err.message);
+        res.render('home', { produtos: [] });
+    }
+});
+    
 
     // Register
 router.get('/register',(req,res)=>{

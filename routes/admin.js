@@ -7,7 +7,7 @@ require('../models/product')
 const Product= mongoose.model('products')
 
 // Controllers
-const ProductController= require('../controllers/productController')
+const ProductController= require('../controllers/localproductController')
 
 // Routes Register New Product
 

@@ -7,10 +7,25 @@
 - Editar estoque -- 
 - Listagem de estoque -- 
 - Quantidade em estoque -- 
+- Pagina com dados do usuário editável
+- Add endereço no cadastro de usuário 
+
+ Depois de importar com API
 - Carrinho ( armazenar produtos ) 
 - Organização por A-Z 
 - Organização por valor 
 - LocalStorage ( preferências e carrinho) 
+
+
+
+Passos:
+- Avatar login- register- sair- dados
+- Listagem de itens com API e adicionados
+- Pesquisa de items
+- Filtros de items
+
+
+- Auth, eAdmin 
 
 
 
