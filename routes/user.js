@@ -11,33 +11,16 @@ const axios= require('axios')
 
 // Controllers
 const UserController= require('../controllers/userController')
+const productController = require('../controllers/productController')
 
 
 // Routes Usuário
 
-router.get('/', async (req,res)=>{
-    const termo = 'celular';
-
-    try {
-        const resposta = await axios.get(`https://api.mercadolibre.com/sites/MLB/search?q=${termo}`);
-        const produtos = resposta.data.results;
-
-        produtos.forEach(produto => {
-            console.log('Título:', produto.title);
-            console.log('Preço:', produto.price);
-            console.log('Imagem:', produto.thumbnail);
-            console.log('Link:', produto.permalink);
-            console.log('---');
-        });
-
-        // Se quiser exibir no Handlebars:
-        res.render('home', { produtos });
-
-    } catch (err) {
-        console.error('Erro ao buscar produtos:', err.message);
-        res.render('home', { produtos: [] });
-    }
+router.get('/search', async (req,res)=>{
+    const name= req.query.q
+    productController.searchProdcut(req,res,name)
 });
+
     
 
     // Register
