@@ -50,6 +50,9 @@ router.get('/logout',(req,res,next)=>{
 router.get('/profile',(req,res)=>{
     UserController.RenderProf(req,res)
 })
+router.post('/profile/edit',(req,res)=>{
+    UserController.ProfileEdit(req,res)
+})
 
 
 

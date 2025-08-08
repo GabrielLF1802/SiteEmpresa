@@ -1,33 +1,32 @@
-<h1>PROFILE</h1>
 
-<nav>
-    DADOS
-    Endereços ( FUTURAMENTE )
 
-</nav>
-<main>
-    <div>
-        <label for="nome">Nome:</label>
-        <input type="text" value="{{user.nome}}" name="nome">
-    </div>
-    <div>
-        <label for="email">Email:</label>
-        <input type="text" value="{{user.email}}" name="email">
-    </div>
-    <div>
-        <label for="senha">Senha:</label>
-        <input type="password" name="senha">
-    </div>
-    <div>
-        <label for="senha2">Confirme sua senha:</label>
-        <input type="password" name="senha2">
-    </div>
-    <div>
-        <label for="nasc">Data de nascimento:</label>
-        <input type="date" name="nasc">
-    </div>
-
-    DADOS DO USUÁRIO ( PAGINA DADOS )
-    EDIT
-    SALVAR
-</main>
+<div class="flex h-full w-full">
+    <nav class=" w-16 bg-black h-full md:w-10">
+        DADOS
+        Endereços ( FUTURAMENTE )
+    
+    </nav>
+    <main class=" flex-1 bg-white px-20 h-full">
+        <form action="/user/profile/edit" method="POST">
+            <div>
+                <label for="nome">Nome:</label>
+                <input type="text" value="{{user.nome}}" name="nome">
+            </div>
+            <div>
+                <label for="email">Email:</label>
+                <input type="text" value="{{user.email}}" name="email">
+            </div>
+            <div>
+                <label for="senha">Senha:</label>
+                <input type="password" name="senha">
+            </div>
+            <div>
+                <label for="senha2">Confirme sua senha:</label>
+                <input type="password" name="senha2">
+            </div>
+            <input type="hidden" name="id" value="{{user._id}}">
+            <button>Salvar</button>
+        </form>
+    
+    </main>
+</div>

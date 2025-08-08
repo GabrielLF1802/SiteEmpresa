@@ -82,6 +82,45 @@ class UserController{
             console.log('Falha ao carregar perfil', err)
     }
     }
+    async ProfileEdit(req,res){
+        try{
+            const user= await Usuario.findOne({_id:req.body.id})
+            if(user){
+                if(user.nome!= req.body.nome){
+                    user.nome= req.body.nome
+                    await user.save()
+                }
+                if(user.email!=req.body.email){
+                    user.email=req.body.email
+                    await user.save()
+                }
+                if(user.senha!=req.body.senha){
+                    if(req.body.senha== undefined|| req.body.senha == null || !req.body.senha|| req.body.senha.length<4){
+                        req.flash('error_msg','Erro ao salvar, confira a sua nova senha')
+                        return res.redirect('/user/profile')
+                    }else{
+                        const salt= await bcrypt.genSalt(10)
+                        const novasenha= await bcrypt.hash(req.body.senha, salt)
+                        user.senha= novasenha
+                        await user.save()
+                        req.flash('success_msg','Senha atualizada com sucesso!')
+                        return res.redirect('/user/profile')
+                    }
+                }
+                req.flash('success_msg','Perfil atualizado!')
+                console.log('Perfil atualizado com sucesso!')
+                return res.render('home')
+                
+
+            }
+        }catch(err){
+            req.flash('error_msg','Erro ao salvar atualização de perfil', err)
+            res.render('user/profile')
+            console.log('Erro ao atualizar perfil', err)
+
+        }
+
+    }
 
 }
 module.exports= new UserController()
