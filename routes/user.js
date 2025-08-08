@@ -2,26 +2,20 @@
 
 const express = require('express')
 const router = express.Router()
-const mongoose= require('mongoose')
-require('../models/user')
-const Usuario = mongoose.model('usuarios')
-const bcrypt= require('bcryptjs')
 const passport= require('passport')
-const axios= require('axios')
+
 
 // Controllers
 const UserController= require('../controllers/userController')
-const productController = require('../controllers/productController')
+
 
 
 // Routes Usuário
 
-router.get('/search', async (req,res)=>{
-    const name= req.query.q
-    productController.searchProdcut(req,res,name)
-});
-
-    
+    // Home
+router.get('/',(req,res)=>{
+    res.render('home')
+})
 
     // Register
 router.get('/register',(req,res)=>{
@@ -50,6 +44,11 @@ router.post('/login',(req,res,next)=>{
 
 router.get('/logout',(req,res,next)=>{
     UserController.Sair(req,res,next)
+})
+
+// Profile
+router.get('/profile',(req,res)=>{
+    UserController.RenderProf(req,res)
 })
 
 

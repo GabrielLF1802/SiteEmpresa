@@ -72,6 +72,16 @@ class UserController{
         res.redirect('/user/')
     })
 }
+    async RenderProf(req,res){
+        try{
+            if(req.isAuthenticated()){
+                res.render('user/profile',{user:req.user})
+            }
+        }catch(err){
+            req.flash('error_msg','Erro ao carregar perfil de usuário')
+            console.log('Falha ao carregar perfil', err)
+    }
+    }
 
 }
 module.exports= new UserController()

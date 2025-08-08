@@ -16,7 +16,7 @@ class Product{
                 console.log('Imagem:', product.thumbnail); 
                 console.log('---');
             })
-            res.render('products/searchproduct')
+            res.render('products/searchproduct',{product})
         }catch(err){
             req.flash('error_msg','Erro ao carregar produtos',err)
             console.log(err)

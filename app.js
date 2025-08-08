@@ -12,6 +12,7 @@ const db = require('./config/db')
 // Routes
 const usuario= require('./routes/user')
 const admin= require('./routes/admin')
+const search= require('./routes/search')
 // Authenticate
 const passport= require('passport')
 require('./config/auth')(passport)
@@ -68,6 +69,9 @@ require('./config/auth')(passport)
 
     // Admin
         app.use('/admin',admin)
+    
+    // Search
+        app.use('/search',search)
 
 
 

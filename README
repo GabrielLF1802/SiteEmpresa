@@ -8,7 +8,7 @@
 - Listagem de estoque -- 
 - Quantidade em estoque -- 
 - Pagina com dados do usuário editável
-- Add endereço no cadastro de usuário 
+    - Add endereço no cadastro de usuário 
 
  Depois de importar com API
 - Carrinho ( armazenar produtos ) 
@@ -19,10 +19,12 @@
 
 
 Passos:
-- Avatar login- register- sair- dados
-- Listagem de itens com API e adicionados
-- Pesquisa de items
-- Filtros de items
+- Avatar login- register- sair- dados --
+- Listagem de itens com API e adicionados -- 
+- Pesquisa de items --
+- CSS ITEMS PESQUISADOS
+- CSS PROFILE
+- CSS REGISTER
 
 
 - Auth, eAdmin 
