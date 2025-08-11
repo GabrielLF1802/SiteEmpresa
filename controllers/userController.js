@@ -1,7 +1,9 @@
 // Imports
 const mongoose= require('mongoose')
 require('../models/user')
+require('../models/adress')
 const Usuario= mongoose.model('usuarios')
+const Adress= mongoose.model('address')
 const bcrypt= require('bcryptjs')
 
 class UserController{
@@ -55,6 +57,28 @@ class UserController{
         }
         if(!data.nasc|| data.nasc== undefined || data.nasc==null){
             erros.push({texto:'Data de nasc. inválida'})
+        }
+        return erros
+    }
+    validEnd(data){
+        const erros= []
+        if(!data.end||data.end==null||data.end==undefined){
+            erros.push({texto:'Endereço inválido'})
+        }
+        if(!data.numero||data.numero==null||data.numero==undefined){
+            erros.push({texto:'Número inválido'})
+        }
+        if(!data.bairro||data.bairro==undefined||data.bairro==null){
+            erros.push({texto:'Bairro inválido'})
+        }
+        if(!data.cep||data.cep==undefined||data.cep==null){
+            erros.push({texto:'CEP inválido'})
+        }
+        if(!data.cidade||data.cidade==undefined||data.cidade==null){
+            erros.push({texto:"Cidade inválida"})
+        }
+        if(!data.estado||data.estado==undefined||data.estado==null){
+            erros.push({texto:'Estado inválido'})
         }
         return erros
     }
@@ -120,6 +144,37 @@ class UserController{
 
         }
 
+    }
+    async addAdress(req,res){
+        const erros= this.validEnd(req.body)
+        if(erros.length>0){
+            return res.render('user/addadress',{erros})
+        }
+        try{
+            if(req.isAuthenticated()){
+                const data= req.body
+                const newEnd= new Adress({
+                    end:data.end,
+                    numero:data.numero,
+                    bairro:data.bairro,
+                    cep:data.bairro,
+                    cidade:data.cidade,
+                    estado:data.estado,
+                    usuario: req.user.id
+                })
+                await newEnd.save()
+                console.log('Novo endereço salvo com sucesso')
+                req.flash('success_msg','Novo endreço salvo')
+                res.render('user/adress')
+            }
+
+
+        }catch(err){
+            console.log('Erro ao salvar novo endreço', err)
+            req.flash('error_msg','Erro ao salvar novo endereço')
+            res.render('user/adress')
+        }
+        
     }
 
 }

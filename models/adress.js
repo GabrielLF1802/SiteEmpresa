@@ -15,7 +15,7 @@ const Adress= new Schema({
         required:true
     },
     cep:{
-        type:Number,
+        type:String,
         required:true
     },
     cidade:{
@@ -25,7 +25,12 @@ const Adress= new Schema({
     estado:{
         type:String,
         required:true
+    },
+    usuario:{
+        type:Schema.Types.ObjectId,
+        ref:'usuarios',
+        required:true
     }
 })
 
-mongoose.model('adress', Adress)
+mongoose.model('address', Adress)
