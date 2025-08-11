@@ -53,6 +53,9 @@ router.get('/profile',(req,res)=>{
 router.post('/profile/edit',(req,res)=>{
     UserController.ProfileEdit(req,res)
 })
+router.render('/profile/adress',(req,res)=>{
+    res.render('user/adress')
+})
 
 
 

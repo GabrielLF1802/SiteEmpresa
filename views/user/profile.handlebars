@@ -1,13 +1,14 @@
 
 
-<div class="flex h-full w-full">
-    <nav class=" w-16 bg-black h-full md:w-10">
-        DADOS
-        Endereços ( FUTURAMENTE )
-    
+<div class="flex h-screen w-full">
+
+    <nav class="w-1/4 bg-black text-white p-4">
+        <a href="/user/profile/adress" class="block py-2">Endereços</a>
     </nav>
-    <main class=" flex-1 bg-white px-20 h-full">
-        <form action="/user/profile/edit" method="POST">
+
+
+    <main class="w-3/4 bg-white px-20">
+        <form action="/user/profile/edit" method="POST" class="space-y-4">
             <div>
                 <label for="nome">Nome:</label>
                 <input type="text" value="{{user.nome}}" name="nome">
@@ -18,15 +19,14 @@
             </div>
             <div>
                 <label for="senha">Senha:</label>
-                <input type="password" name="senha">
+                <input type="password" name="senha" placeholder="Digite a sua nova senha">
             </div>
             <div>
                 <label for="senha2">Confirme sua senha:</label>
-                <input type="password" name="senha2">
+                <input type="password" name="senha2" placeholder="Confirme a sua nova senha">
             </div>
             <input type="hidden" name="id" value="{{user._id}}">
             <button>Salvar</button>
         </form>
-    
     </main>
 </div>
