@@ -68,6 +68,9 @@ router.get('/profile/editaddress/:id',(req,res)=>{
 router.post('/profile/editaddress',(req,res)=>{
     UserController.saveAddress(req,res)
 })
+router.post('/profile/deletaddress',(req,res)=>{
+    UserController.delAddress(req,res)
+})
 
 
 

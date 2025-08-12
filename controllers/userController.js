@@ -139,7 +139,7 @@ class UserController{
             }
         }catch(err){
             req.flash('error_msg','Erro ao salvar atualização de perfil', err)
-            res.render('user/profile')
+            res.redirect('/user/profile')
             console.log('Erro ao atualizar perfil', err)
 
         }
@@ -165,14 +165,14 @@ class UserController{
                 await newEnd.save()
                 console.log('Novo endereço salvo com sucesso')
                 req.flash('success_msg','Novo endreço salvo')
-                res.render('user/address')
+                res.redirect('/user/profile/address')
             }
 
 
         }catch(err){
             console.log('Erro ao salvar novo endreço', err)
             req.flash('error_msg','Erro ao salvar novo endereço')
-            res.render('user/address')
+            res.redirect('/user/profile/address')
         }
         
     }
@@ -186,7 +186,7 @@ class UserController{
         }catch(err){
             req.flash('error_msg','Erro ao carregar endereços')
             console.log('erro ao carregar', err)
-            res.render('user/profile')
+            res.redirect('/user/profile/profile')
         }
     }
     async editAddress(req,res){
@@ -200,11 +200,11 @@ class UserController{
         }catch(err){
             console.log('erro ao carregar endereço', err)
             req.flash('error_msg','Erro ao carregar endereço')
-            res.render('user/address')
+            res.redirect('/user/profile/address')
         }
     }
     async saveAddress(req,res){
-        const erros= await this.validEnd(req.body)
+        const erros= this.validEnd(req.body)
         if(erros.length>0){
             return res.render('user/editaddress',{erros})
         }
@@ -222,12 +222,24 @@ class UserController{
                 })  
                 await newEnd.save()
                 console.log('Endereço editado com sucesso!')
-                res.render('user/address')              
+                res.redirect('/user/profile/address')              
             }
         }catch(err){
             req.flash('error_msg','Erro ao salvar endereço')
             console.log('erro ao editar endereço',err)
-            res.render('user/address')
+            res.redirect('/user/profile/address')
+        }
+
+    }
+    async delAddress(req,res){
+        try{
+            await Address.deleteOne({_id:req.body.id})
+            req.flash('success_msg','Endereço deletado com sucesso')
+            res.redirect('/user/profile/address')
+        }catch(err){
+            req.flash('error_msg','Erro ao deletar endereço')
+            console.log('Algo deu errado',err)
+            res.redirect('/user/profile/address')
         }
 
     }

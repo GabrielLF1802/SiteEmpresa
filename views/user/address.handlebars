@@ -6,6 +6,10 @@
         <div>{{end}}</div>
         <input type="hidden" name="id" value="{{_id}}">
         <a href="/user/profile/editaddress/{{_id}}"><button>Abrir</button></a>
+        <form action="/user/profile/deletaddress" method="POST">
+            <button>Delet</button>
+            <input type="hidden" name="id" value="{{_id}}">
+        </form>
     {{/each}}
 
 {{else}} 
