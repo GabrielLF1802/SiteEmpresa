@@ -6,7 +6,7 @@
     <link href="/css/output.css" rel="stylesheet">
     <title>Main</title>
 </head>
-<body class=" h-screen flex flex-col">
+<body class=" h-screen w-screen flex flex-col">
 
 
 
@@ -21,6 +21,10 @@
     {{>msg}}
         
     {{{body}}}
+    {{#if user}}
+
+        {{>footer}}
+    {{/if}}
 
 </body>
 </html>

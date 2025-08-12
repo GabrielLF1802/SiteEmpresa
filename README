@@ -7,8 +7,8 @@
 - Editar estoque -- 
 - Listagem de estoque -- 
 - Quantidade em estoque -- 
-- Pagina com dados do usuário editável
-    - Add endereço no cadastro de usuário 
+- Pagina com dados do usuário editável--
+    - Add endereço no cadastro de usuário --
 
  Depois de importar com API
 - Carrinho ( armazenar produtos ) 
@@ -28,11 +28,12 @@ Passos:
 
 
 - Auth, eAdmin 
+- Esconder o footer em algumas rotas
 
 
 
 
-- API com preço e imagem externo de produtos -> API Mercado livre
+- API com preço e imagem externo de produtos -> API Mercado livre --
 - Produtos API + Produtos Loja ( adicionados manualmente )
 
 
