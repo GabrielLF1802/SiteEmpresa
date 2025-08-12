@@ -5,33 +5,31 @@
 {{/if}}
 
 <main>
-    <form action="/user/profile/adress" method="POST">
+    <form action="/user/profile/editaddress" method="POST">
         <div>
             <label for="Endereço">Endereço:</label>
-            <input type="text" name="end">
+            <input type="text" name="end" value="{{address.end}}">
         </div>
         <div>
             <label for="Bairro">Bairro:</label>
-            <input type="text" name="bairro">
+            <input type="text" name="bairro" value="{{address.bairro}}">
         </div>
         <div>
             <label for="numero">Número:</label>W
-            <input type="number" name="numero">
+            <input type="number" name="numero" value="{{address.numero}}">
         </div>
         <div>
             <label for="cep">CEP:</label>
-            <input type="number" name="cep">
+            <input type="text" name="cep" value="{{address.cep}}">
         </div>
         <div>
             <label for="Cidade">Cidade:</label>
-            <input type="text" name="cidade">
+            <input type="text" name="cidade" value="{{address.cidade}}">
         </div>
         <div>
             <label for="estado">Estado:</label>
-            <input type="text" name="estado">
+            <input type="text" name="estado" value="{{address.estado}}">
         </div>
-        <button>Salvar novo endereço</button>
+        <button>Salvar alterações</button>
     </form>
 </main>
-
-{{!-- Colocar um select no ' estado ' --}}

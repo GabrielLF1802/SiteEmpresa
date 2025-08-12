@@ -1,9 +1,9 @@
 // Imports
 const mongoose= require('mongoose')
 require('../models/user')
-require('../models/adress')
+require('../models/address')
 const Usuario= mongoose.model('usuarios')
-const Adress= mongoose.model('address')
+const Address= mongoose.model('address')
 const bcrypt= require('bcryptjs')
 
 class UserController{
@@ -145,15 +145,15 @@ class UserController{
         }
 
     }
-    async addAdress(req,res){
+    async addAddress(req,res){
         const erros= this.validEnd(req.body)
         if(erros.length>0){
-            return res.render('user/addadress',{erros})
+            return res.render('user/addaddress',{erros})
         }
         try{
             if(req.isAuthenticated()){
                 const data= req.body
-                const newEnd= new Adress({
+                const newEnd= new Address({
                     end:data.end,
                     numero:data.numero,
                     bairro:data.bairro,
@@ -165,16 +165,71 @@ class UserController{
                 await newEnd.save()
                 console.log('Novo endereço salvo com sucesso')
                 req.flash('success_msg','Novo endreço salvo')
-                res.render('user/adress')
+                res.render('user/address')
             }
 
 
         }catch(err){
             console.log('Erro ao salvar novo endreço', err)
             req.flash('error_msg','Erro ao salvar novo endereço')
-            res.render('user/adress')
+            res.render('user/address')
         }
         
+    }
+    async listEnd(req,res){
+        try{
+            if(req.isAuthenticated()){
+                const address= await Address.find({usuario:req.user.id})
+                return res.render('user/address',{address:address})
+            }
+
+        }catch(err){
+            req.flash('error_msg','Erro ao carregar endereços')
+            console.log('erro ao carregar', err)
+            res.render('user/profile')
+        }
+    }
+    async editAddress(req,res){
+        try{
+            if(req.isAuthenticated()){
+                const address= await Address.findOne({_id:req.params.id})
+                
+                return res.render('user/editaddress',{address:address})
+            }
+
+        }catch(err){
+            console.log('erro ao carregar endereço', err)
+            req.flash('error_msg','Erro ao carregar endereço')
+            res.render('user/address')
+        }
+    }
+    async saveAddress(req,res){
+        const erros= await this.validEnd(req.body)
+        if(erros.length>0){
+            return res.render('user/editaddress',{erros})
+        }
+        try{
+            if(req.isAuthenticated()){
+                const data= req.body
+                const newEnd= new Address({
+                    end:data.end,
+                    numero:data.numero,
+                    bairro:data.bairro,
+                    cep:data.bairro,
+                    cidade:data.cidade,
+                    estado:data.estado,
+                    usuario: req.user.id
+                })  
+                await newEnd.save()
+                console.log('Endereço editado com sucesso!')
+                res.render('user/address')              
+            }
+        }catch(err){
+            req.flash('error_msg','Erro ao salvar endereço')
+            console.log('erro ao editar endereço',err)
+            res.render('user/address')
+        }
+
     }
 
 }

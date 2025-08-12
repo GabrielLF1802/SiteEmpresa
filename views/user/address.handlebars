@@ -1,0 +1,14 @@
+{{!-- posso colocar opção ' clicavel ' para editar cada endereço, sendo possível cadastrar mais de um --}}
+<h1>Meu endereço de entrega</h1>
+<a href="/user/profile/newaddress"><button>Novo End</button></a>
+{{#if address}}
+    {{#each address}}
+        <div>{{end}}</div>
+        <input type="hidden" name="id" value="{{_id}}">
+        <a href="/user/profile/editaddress/{{_id}}"><button>Abrir</button></a>
+    {{/each}}
+
+{{else}} 
+    <h1>Nenhum endereço registrado</h1>
+{{/if}}
+

@@ -1,7 +1,7 @@
 const mongoose= require('mongoose')
 const Schema= mongoose.Schema
 
-const Adress= new Schema({
+const Address= new Schema({
     end:{
         type:String,
         required:true
@@ -33,4 +33,4 @@ const Adress= new Schema({
     }
 })
 
-mongoose.model('address', Adress)
+mongoose.model('address', Address)

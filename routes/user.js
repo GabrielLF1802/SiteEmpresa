@@ -53,14 +53,20 @@ router.get('/profile',(req,res)=>{
 router.post('/profile/edit',(req,res)=>{
     UserController.ProfileEdit(req,res)
 })
-router.get('/profile/adress',(req,res)=>{
-    res.render('user/adress')
+router.get('/profile/address',(req,res)=>{
+    UserController.listEnd(req,res)
 })
-router.get('/profile/newadress',(req,res)=>{
-    res.render('user/addadress')
+router.get('/profile/newaddress',(req,res)=>{
+    res.render('user/addaddress')
 })
-router.post('/profile/adress',(req,res)=>{
-    UserController.addAdress(req,res)
+router.post('/profile/address',(req,res)=>{
+    UserController.addAddress(req,res)
+})
+router.get('/profile/editaddress/:id',(req,res)=>{
+    UserController.editAddress(req,res)
+})
+router.post('/profile/editaddress',(req,res)=>{
+    UserController.saveAddress(req,res)
 })
 
 
