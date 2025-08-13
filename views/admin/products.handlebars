@@ -2,29 +2,30 @@
 
 
 
-<main class="pl-10 pt-5 pr-10">
+<main class="pl-30 pt-5 pr-8 grid grid-cols-1 gap-x-3 gap-y-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 ">
     {{#each products}}
-        <div class="pt-5"> {{!-- Bloco inteiro do produto --}} 
-            <div> {{!-- Bloco da imagem --}}
-                <img src="{{this.image}}" alt="{{this.nome}}">
+        <div class="pt-8 w-full max-w-[200px] h-auto group relative bg-gray-300"> {{!-- Bloco inteiro do produto --}} 
+            <div class=" h-full flex justify-center items-center max-w-[200px] max-h-[250px] text-center p-2 bg-black"> {{!-- Bloco da imagem --}}
+                <img src="{{image}}" alt="{{nome}}" class=" mx-auto w-[150px] h-[200px] max-w-[150px] max-h-[200px] group-hover:opacity-75">
             </div>
             <div> {{!-- bloco dos dados do produto --}} 
                 <h1>{{nome}}</h1>
-                <p>{{desc}}</p>
-                <p>{{valor}}</p>
-                <p>{{quant}}</p>
+                <p>R${{valor}}</p>
+                <p>Em estoque: {{quant}}</p>
             </div>
-            <div> {{!-- Bloco do botão edit  --}}
-                <a href="/admin/products/edit/{{_id}}">
-                <button>Edit</button>
-                </a>
-            </div>
-            <div> {{!-- Bloco do botão delet  --}}
-                <form action="/admin/products/delet" method="POST">
-                    <input type="hidden" name="id" value="{{_id}}">
-                    <a href="/admin"><button>Delet</button></a>
-            
-                </form>
+            <div class="flex"> {{!-- Div dos buttons --}}
+                <div> {{!-- Bloco do botão edit  --}}
+                    <a href="/admin/products/edit/{{_id}}">
+                    <button class="text-purple-700 hover:text-white border border-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-purple-400 dark:text-purple-400 dark:hover:text-white dark:hover:bg-purple-500 dark:focus:ring-purple-900">Edit</button>
+                    </a>
+                </div>
+                <div> {{!-- Bloco do botão delet  --}}
+                    <form action="/admin/products/delet" method="POST">
+                        <input type="hidden" name="id" value="{{_id}}">
+                        <a href="/admin"><button class="text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900" >Delet</button></a>
+                
+                    </form>
+                </div>
             </div>
         </div>
 
