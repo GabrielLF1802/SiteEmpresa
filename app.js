@@ -31,7 +31,7 @@ require('./config/auth')(passport)
     app.use(passport.session())
     // Flash
     app.use(flash());
-    
+
     // Handlebars
     app.engine('handlebars', engine({defaultLayout:'main',runtimeOptions: {
     allowProtoPropertiesByDefault: true,
@@ -53,6 +53,9 @@ require('./config/auth')(passport)
         app.use(bodyParser.json())
     // Public
         app.use(express.static(path.join(__dirname,'public')))
+         // Uploads
+            app.use('/uploads', express.static(path.join(__dirname, 'uploads'))); /* Qualquer arquivo salvo pode ser acessado pela URL */
+
     // Mongoose
         mongoose.Promise= global.Promise
         mongoose.connect(db.mongoURI).then(() => {

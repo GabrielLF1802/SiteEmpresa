@@ -22,7 +22,7 @@ class ProductController{
                 desc:req.body.desc,
                 valor:req.body.valor,
                 quant:req.body.quant,
-                image: req.file ? req.file.path : null
+                image: req.file ? `/uploads/${req.file.filename}` : null
             })
             await newProduct.save()
             console.log('Sucesso ao salvar novo produto')
