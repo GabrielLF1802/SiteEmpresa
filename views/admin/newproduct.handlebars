@@ -19,7 +19,8 @@
             <label for="quant">Quantidade em estoque:</label>
         </div>
         <div>
-            <input type="file" name="image" class="hidden" id="image" accept="image/*">
+            <input type="file" name="image" class="hidden" id="image" accept="image/*" onchange="previewImage(event)">
+            <img src="" id="preview" alt="" class="max-w-[300px] max-h-[300px]">
             <button type="button" onclick="document.getElementById('image').click()">
                 Selecionar Foto
             </button>
@@ -30,3 +31,17 @@
 
 </form>
 <a href="/admin/products"><button>Lista de Produtos</button></a>
+<script>
+function previewImage(event) {
+    var file = event.target.files[0];
+    if (file) {
+        var reader = new FileReader();
+
+        reader.onload = function(e) {
+            document.getElementById('preview').src = e.target.result;
+        };
+
+        reader.readAsDataURL(file);
+    }
+}
+</script>
