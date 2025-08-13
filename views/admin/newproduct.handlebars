@@ -1,6 +1,6 @@
 <h1>ADD PRODUCT</h1>
 
-<form action="/admin/newproduct" method="POST">
+<form action="/admin/newproduct" method="POST" enctype="multipart/form-data">
     <main>
         <div>
             <input type="text" name="nome">
@@ -19,9 +19,12 @@
             <label for="quant">Quantidade em estoque:</label>
         </div>
         <div>
-            <img src="" alt="">
+            <input type="file" name="image" class="hidden" id="image" accept="image/*">
+            <button type="button" onclick="document.getElementById('image').click()">
+                Selecionar Foto
+            </button>
         </div>
-        <button>Cadastrar Produto</button>
+        <button type="submit">Cadastrar Produto</button>
     </main>
 
 

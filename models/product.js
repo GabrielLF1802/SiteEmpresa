@@ -18,6 +18,9 @@ const Product= new Schema({
     quant:{
         type:Number,
         default:0
+    },
+    image:{
+        type:String
     }
 })
 mongoose.model('products', Product)

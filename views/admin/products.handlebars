@@ -1,21 +1,30 @@
 <a href="/admin/newproduct"><button>Adicionar produto</button></a>
 
 
-{{#each products}}
 
-<h1>{{nome}}</h1>
-<p>{{desc}}</p>
-<p>{{valor}}</p>
-<p>{{quant}}</p>
-
-
-<a href="/admin/products/edit/{{_id}}"><button>Edit</button></a>
-
-<form action="/admin/products/delet" method="POST">
-    <input type="hidden" name="id" value="{{_id}}">
-    <a href="/admin"><button>Delet</button></a>
-    
-</form>
+<main class="pl-10 pt-5 pr-10">
+    {{#each products}}
+        <div>
+            <div>
+                <h1>{{nome}}</h1>
+                <p>{{desc}}</p>
+                <p>{{valor}}</p>
+                <p>{{quant}}</p>
+            </div>
+            <div>
+                <a href="/admin/products/edit/{{_id}}">
+                <button>Edit</button>
+                </a>
+            </div>
+            <div>
+                <form action="/admin/products/delet" method="POST">
+                    <input type="hidden" name="id" value="{{_id}}">
+                    <a href="/admin"><button>Delet</button></a>
+            
+                </form>
+            </div>
+        </div>
+</main>
 
 {{else}}
 

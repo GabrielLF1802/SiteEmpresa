@@ -5,16 +5,19 @@ const router = express.Router()
 const mongoose= require('mongoose')
 require('../models/product')
 const Product= mongoose.model('products')
+require('../config/multer')
+
 
 // Controllers
 const ProductController= require('../controllers/localproductController')
+const upload = require('../config/multer')
 
 // Routes Register New Product
 
 router.get('/newproduct',(req,res)=>{
     res.render('admin/newproduct')
 })
-router.post('/newproduct',(req,res)=>{
+router.post('/newproduct', upload.single('image'),(req,res)=>{
     ProductController.RegisterProduct(req,res)
 })
 

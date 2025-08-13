@@ -4,6 +4,7 @@ require('../models/product')
 const Product= mongoose.model('products')
 
 
+
 class ProductController{
     async RegisterProduct(req,res){
         const erros = this.VerifErros(req.body)
@@ -20,7 +21,8 @@ class ProductController{
                 nome:req.body.nome,
                 desc:req.body.desc,
                 valor:req.body.valor,
-                quant:req.body.quant
+                quant:req.body.quant,
+                image: req.file ? req.file.path : null
             })
             await newProduct.save()
             console.log('Sucesso ao salvar novo produto')

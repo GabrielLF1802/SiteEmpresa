@@ -61,7 +61,6 @@ require('./config/auth')(passport)
             console.log('Falha ao conectar' + erro)
         })
 
-
 // Rotas
 
     // Usuários     
