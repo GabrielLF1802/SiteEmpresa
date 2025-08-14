@@ -56,7 +56,14 @@ class ProductController{
     }
     async ListProducts(req,res){
         try{
-            const products = await Product.find()
+            let products = await Product.find()
+            products= products.map(p=>({
+                ...p.toObject(),
+                valorformatado: p.valor.toLocaleString('pt-BR',{
+                    style:'currency',
+                    currency:'BRL'
+                })
+            }))
             return res.render('admin/products',{products:products})
         }catch(err){
             console.log('Erro ao listar os produtos')

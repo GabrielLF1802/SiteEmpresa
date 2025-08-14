@@ -8,7 +8,7 @@
             <label for="nome">Nome do produto:</label>
         </div>
         <div>
-            <input type="number" name="valor" value="{{product.valor}}">
+            <input type="text" id="valor" name="valor" value="{{product.valor}}">
             <label for="preco">Valor do produto:</label>
         </div>
         <div>
@@ -28,3 +28,13 @@
 
 </form>
 <a href="/admin/products"><button>Lista de Produtos</button></a>
+<script>
+    document.getElementById('valor').addEventListener('input',function(e){
+    let valor= e.target.value.replace(/\D/g, '')
+
+    valor= (valor/100).toFixed(2)+''
+    valor= valor.replace('.',',')
+    valor= valor.replace(/\B(?=(\d{3})+(?!\d))/g, '.')
+    e.target.value= valor
+})
+</script>
