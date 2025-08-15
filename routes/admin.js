@@ -6,6 +6,7 @@ const mongoose= require('mongoose')
 require('../models/product')
 const Product= mongoose.model('products')
 require('../config/multer')
+const {eAdmin}= require('../helpers/eAdmin')
 
 
 // Controllers
@@ -14,32 +15,32 @@ const upload = require('../config/multer')
 
 // Routes Register New Product
 
-router.get('/newproduct',(req,res)=>{
+router.get('/newproduct', eAdmin, (req,res)=>{
     res.render('admin/newproduct')
 })
-router.post('/newproduct', upload.single('image'),(req,res)=>{
+router.post('/newproduct',eAdmin,  upload.single('image'),(req,res)=>{
     ProductController.RegisterProduct(req,res)
 })
 
 // Routes List Products
 
-router.get('/products',(req,res)=>{
+router.get('/products', eAdmin, (req,res)=>{
     ProductController.ListProducts(req,res)
 })
-router.get('/products/edit/:id',(req,res)=>{
+router.get('/products/edit/:id', eAdmin, (req,res)=>{
     ProductController.EditProduct(req,res)    
 })
 
 
 
-router.post('/products/edit',(req,res)=>{
+router.post('/products/edit', eAdmin, (req,res)=>{
     ProductController.SaveEdit(req,res)
 })
 
 
 
 
-router.post('/products/delet',(req,res)=>{
+router.post('/products/delet', eAdmin, (req,res)=>{
     ProductController.DeletProduct(req,res)
 })
 
