@@ -1,14 +1,18 @@
 
-
-<div class=" flex h-screen items-center justify-center px-4 bg-gray-500 sm:px-6 lg:px-8 ">
     {{#if erros}}
+    <div class="bg-gray-500 w-full grid grid-cols-1 justify-items-center justify-center items-center">
         {{#each erros}}
-    <div>
-        {{texto}}
+        <div class="py-1">
+            <div class="bg-red-500 text-white px-2 py-1 rounded-lg shadow-lg flex items-center justify-between w-60">
+                <p class="">{{texto}}</p>
+            </div>
+        </div>
+        {{/each}}
     </div>
-    {{/each}}
     {{/if}}
-    <div class="bg-white p-4 h-full w-[35%] space-y-4">
+<div class=" flex h-screen min-h-screen items-center justify-center px-4 bg-gray-500 sm:px-6 lg:px-8 ">
+
+    <div class="bg-white p-4 h-full w-[35%] space-y-4 sm:space-y-1">
         <div>
             <h1 class="text-center pt-4 text-lg">Registre-se</h1>
         </div>
