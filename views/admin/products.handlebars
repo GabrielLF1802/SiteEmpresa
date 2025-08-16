@@ -1,43 +1,45 @@
-<div class="text-center mt-8">
-    <a href="/admin/newproduct"><button class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Adicionar produto</button>
-</a></div>
-
-
-
-<main class="pl-20 pt-5 pr-8 grid grid-cols-1 gap-x-2 gap-y-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 ">
-    {{#each products}}
-        <div class="pt-8 w-full max-w-[220px] h-108 group relative bg-gray-500 rounded-md hover:scale-103 transform-gpu hover:shadow-lg hover:shadow-black/60"> {{!-- Bloco inteiro do produto --}} 
-            <div class=" h-full flex justify-center items-center max-w-[200px] max-h-[250px] text-center p-2 mx-auto"> {{!-- Bloco da imagem --}}
-                <img src="{{image}}" alt="{{nome}}" class=" mx-auto w-[170px] h-[200px] max-w-[170px] max-h-[200px] group-hover:opacity-65">
-            </div>
-            <div class="w-full max-w-[200px] h-auto "> {{!-- bloco dos dados do produto --}} 
-                <h1 class="text-center">{{nome}}</h1>
-                <p class="pl-2">{{valorformatado}}</p>
-                <p class="pl-2">Em estoque: {{quant}}</p>
-            </div>
-            <div class="flex w-full max-w-[200px] pt-5 pl-2"> {{!-- Div dos buttons --}}
-                <div> {{!-- Bloco do botão edit  --}}
-                    <a href="/admin/products/edit/{{_id}}">
-                    <button class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 ">Edit</button>
-                    </a>
+<div class=" relative flex flex-col mx-auto w-full">
+    <div class="text-center mt-8">
+        <a href="/admin/newproduct"><button class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Adicionar produto</button>
+    </a></div>
+    
+    
+    
+    <main class=" relative flex flex-grow pl-20  pt-5 pr-8 grid grid-cols-1 gap-x-2 gap-y-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 ">
+        {{#each products}}
+            <div class="pt-8 w-full max-w-[240px] h-108 group relative bg-gray-500 rounded-md hover:scale-103 transform-gpu hover:shadow-lg hover:shadow-black/60"> {{!-- Bloco inteiro do produto --}}
+                <div class=" h-full flex justify-center items-center max-w-[200px] max-h-[250px] text-center p-2 mx-auto"> {{!-- Bloco da imagem --}}
+                    <img src="{{image}}" alt="{{nome}}" class=" mx-auto w-[170px] h-[200px] max-w-[170px] max-h-[200px] group-hover:opacity-65">
                 </div>
-                <div> {{!-- Bloco do botão delet  --}}
-                    <form action="/admin/products/delet" method="POST">
-                        <input type="hidden" name="id" value="{{_id}}">
-                        <a href="/admin"><button class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" >Delet</button></a>
-                
-                    </form>
+                <div class="w-full max-w-[200px] h-auto "> {{!-- bloco dos dados do produto --}}
+                    <h1 class="text-center">{{nome}}</h1>
+                    <p class="pl-2">{{valorformatado}}</p>
+                    <p class="pl-2">Em estoque: {{quant}}</p>
+                </div>
+                <div class="flex w-full max-w-[200px] pt-5 pl-2"> {{!-- Div dos buttons --}}
+                    <div> {{!-- Bloco do botão edit  --}}
+                        <a href="/admin/products/edit/{{_id}}">
+                        <button class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 ">Edit</button>
+                        </a>
+                    </div>
+                    <div> {{!-- Bloco do botão delet  --}}
+                        <form action="/admin/products/delet" method="POST">
+                            <input type="hidden" name="id" value="{{_id}}">
+                            <a href="/admin"><button class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" >Delet</button></a>
+    
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
-
-
-        {{else}}
-
-        <h1>Nenhum produto encontrado</h1>
-
-
-    {{/each}}
-</main>
+    
+    
+            {{else}}
+    
+            <h1>Nenhum produto encontrado</h1>
+    
+    
+        {{/each}}
+    </main>
+</div>
 
 

@@ -10,32 +10,32 @@
         {{/each}}
     </div>
     {{/if}}
-<div class=" flex h-screen min-h-screen items-center justify-center px-4 bg-gray-500 sm:px-6 lg:px-8 ">
+<div class=" flex flex-grow h-screen min-h-screen items-center justify-center px-4 bg-gray-700 sm:px-6 lg:px-8 ">
 
-    <div class="bg-white p-4 h-full w-[35%] space-y-4 sm:space-y-1">
+    <div class="bg-gray-500 p-4 h-full w-[35%] space-y-4 sm:space-y-1">
         <div>
-            <h1 class="text-center pt-4 text-lg">Registre-se</h1>
+            <h1 class="text-center pt-4 text-3xl font-medium font-serif">Registre-se</h1>
         </div>
         <form action="/user/register" method="POST" class="space-y-8">
             <div class=" ">
                 <label for="nome" class="text-md">Nome:</label>
-                <input type="text" id="nome" name="nome" class="w-full px-2 py-3 bg-gray-300 rounded-md">
+                <input type="text" id="nome" name="nome" class="w-full px-2 py-3 font-mono font-normal bg-gray-300 focus:bg-slate-400 focus:shadow-xl/20 rounded-md">
             </div>
             <div class="">
                 <label for="email">Email:</label>
-                <input type="text" id="email" name="email" class="w-full px-2 py-3 bg-gray-300 rounded-md">
+                <input type="text" id="email" name="email" class="w-full px-2 py-3 bg-gray-300 font-mono font-normal focus:bg-slate-400 focus:shadow-xl/20 rounded-md">
             </div>
             <div class="">
                 <label for="nasc">Nascimento:</label>
-                <input type="date" id="nasc" name="nasc" class="w-full px-2 py-3 bg-gray-300 rounded-md">
+                <input type="date" id="nasc" name="nasc" class="w-full px-2 py-3 bg-gray-300 font-mono font-normal focus:bg-slate-400 focus:shadow-xl/20 rounded-md">
             </div>
             <div class="">
                 <label for="senha">Senha:</label>
-                <input type="password" id="senha" name="senha" class="w-full px-2 py-3 bg-gray-300 rounded-md">
+                <input type="password" id="senha" name="senha" class="w-full px-2 py-3 bg-gray-300 font-mono font-normal focus:bg-slate-400 focus:shadow-xl/20 rounded-md">
             </div>
             <div class="">
                 <label for="senha2" class="">Confirme a sua senha:</label>
-                <input type="passowrd" name="senha2" class="w-full px-2 py-3 bg-gray-300 rounded-md">
+                <input type="passowrd" name="senha2" class="w-full px-2 py-3 bg-gray-300 font-mono font-normal focus:bg-slate-400 focus:shadow-xl/20 rounded-md">
             </div>
             <div class="flex justify-center items-center">
                 <div class="flex justify-center items-center">

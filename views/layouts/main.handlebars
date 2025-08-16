@@ -6,7 +6,7 @@
     <link href="/css/output.css" rel="stylesheet">
     <title>Main</title>
 </head>
-<body class=" h-screen w-screen overflow-y-hidden overflow-x-hidden flex flex-col">
+<body class="min-h-screen h-screen w-screen overflow-x-hidden flex flex-col">
 
 
 
@@ -20,13 +20,14 @@
     {{/if}}
     {{>msg}}
         
-    <main class="flex-grow">
+    <main class="flex-grow flex ">
         {{{body}}}
     </main>
     {{#if user}}
-
-        {{>footer}}
+        <footer class="shrink-0">
+            {{>footer}}
+        </footer>
     {{/if}}
-
 </body>
+
 </html>
