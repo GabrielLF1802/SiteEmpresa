@@ -1,23 +1,35 @@
-
-<h1>Meu endereço de entrega</h1>
-<a href="/user/profile/newaddress"><button>Novo End</button></a>
+<nav class="w-1/8 text-center font-semibold bg-black text-white p-4 max-md:w-2/8">
+    <a href="/user/profile" class="block py-2">Perfil</a>
+</nav>
 {{#if address}}
-    {{#each address}}
-        <div>
-            <h2>{{end}}</h2>
-            <h3>{{numero}}</h3>
-            <h4>{{cidade}}{{estado}}</h4>
+    <main class="flex flex-col flex-grow w-7/8">
+        <div class="grid flex-grow grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1 gap-10 m-10 max-md:gap-8 ">
+            {{#each address}}
+                <div class=" items-start justify-start bg-gray-500 w-[350px] h-[300px] max-md:w-[250px] max-md:h-[250px] p-7 flex flex-col rounded-lg border-2 border-dashed hover:scale-103 hover:shadow-lg hover:shadow-black/60">
+                    <div class="space-y-7">
+                        <h2 class="truncate block w-[200px] font-semibold ">Endereço: {{end}}</h2>
+                        <h3 class="truncate block w-[200px] font-semibold ">Número: {{numero}}</h3>
+                        <h4 class="trauncate block w-[200px] font-semibold ">Cidade: {{cidade}}{{estado}}</h4>
+                    </div>
+                    <input type="hidden" name="id" value="{{_id}}">
+                    <div class="flex space-x-8 mt-7">
+                        <a href="/user/profile/editaddress/{{_id}}"><button class="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Abrir</button></a>
+                        <form action="/user/profile/deletaddress" method="POST">
+                            <button class="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Delet</button>
+                            <input type="hidden" name="id" value="{{_id}}">
+                        </form>
+                    </div>
+                </div>
+            {{/each}}
         </div>
-        <input type="hidden" name="id" value="{{_id}}">
-        <a href="/user/profile/editaddress/{{_id}}"><button>Abrir</button></a>
-        <form action="/user/profile/deletaddress" method="POST">
-            <button>Delet</button>
-            <input type="hidden" name="id" value="{{_id}}">
-        </form>
-        <hr>
-    {{/each}}
-
+        <div class="flex items-center justify-center mt-10 mb-10 ">
+            <a href="/user/profile/newaddress"><button class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Novo End</button></a>
+        </div>
+    </main>
 {{else}} 
-    <h1>Nenhum endereço registrado</h1>
+    <div class=" flex flex-grow w-full flex-col justify-start items-center mt-10 space-y-5">
+        <h1 class="tracking-tight font-semibold text-red-600 md:text-lg ">Nenhum endereço registrado</h1>
+        <a href="/user/profile/newaddress"><button class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Adicione um End</button></a>
+    </div>
 {{/if}}
 
