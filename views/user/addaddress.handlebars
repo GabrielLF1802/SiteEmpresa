@@ -3,34 +3,37 @@
         <div>{{texto}}</div>
     {{/each}}
 {{/if}}
-
-<main>
-    <form action="/user/profile/address" method="POST">
+<nav class="w-1/8 text-center font-semibold bg-black text-white p-4 max-md:w-2/8 space-y-7">
+    <a href="/user/profile" class="block py-2">Perfil</a>
+    <a href="/user/profile/address" class="block py-2">Endereços</a>
+</nav>
+<main class="flex flex-grow m-8">
+    <form action="/user/profile/address" method="POST" class="grid grid-cols-1 mx-auto space-y-7">
         <div>
             <label for="Endereço">Endereço:</label>
-            <input type="text" name="end">
+            <input type="text" name="end" class="shadow appearance-none border rounded w-full py-2 px-3 text-black mt-1 leading-tight focus:outline-1 font-mono font-normal focus:bg-slate-400 focus:shadow-xl/20">
         </div>
         <div>
             <label for="Bairro">Bairro:</label>
-            <input type="text" name="bairro">
+            <input type="text" name="bairro" class="shadow appearance-none border rounded w-full py-2 px-3 text-black mt-1 leading-tight focus:outline-1 font-mono font-normal focus:bg-slate-400 focus:shadow-xl/20">
         </div>
         <div>
-            <label for="numero">Número:</label>W
-            <input type="number" name="numero">
+            <label for="numero">Número:</label>
+            <input type="number" name="numero" class="shadow appearance-none border rounded w-full py-2 px-3 text-black mt-1 leading-tight focus:outline-1 font-mono font-normal focus:bg-slate-400 focus:shadow-xl/20">
         </div>
         <div>
             <label for="cep">CEP:</label>
-            <input type="number" name="cep">
+            <input type="number" name="cep" class="shadow appearance-none border rounded w-full py-2 px-3 text-black mt-1 leading-tight focus:outline-1 font-mono font-normal focus:bg-slate-400 focus:shadow-xl/20">
         </div>
         <div>
             <label for="Cidade">Cidade:</label>
-            <input type="text" name="cidade">
+            <input type="text" name="cidade" class="shadow appearance-none border rounded w-full py-2 px-3 text-black mt-1 leading-tight focus:outline-1 font-mono font-normal focus:bg-slate-400 focus:shadow-xl/20">
         </div>
         <div>
             <label for="estado">Estado:</label>
-            <input type="text" name="estado">
+            <input type="text" name="estado" class="shadow appearance-none border rounded w-full py-2 px-3 text-black mt-1 leading-tight focus:outline-1 font-mono font-normal focus:bg-slate-400 focus:shadow-xl/20">
         </div>
-        <button>Salvar novo endereço</button>
+        <button type="submit" class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Salvar novo endereço</button>
     </form>
 </main>
 
