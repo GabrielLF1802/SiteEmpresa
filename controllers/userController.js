@@ -205,25 +205,35 @@ class UserController{
     }
     async saveAddress(req,res){
         const erros= this.validEnd(req.body)
-        if(erros.length>0){
-            return res.render('user/editaddress',{erros})
-        }
-        try{
-            if(req.isAuthenticated()){
-                const data= req.body
-                const newEnd= new Address({
-                    end:data.end,
-                    numero:data.numero,
-                    bairro:data.bairro,
-                    cep:data.bairro,
-                    cidade:data.cidade,
-                    estado:data.estado,
-                    usuario: req.user.id
-                })  
-                await newEnd.save()
-                console.log('Endereço editado com sucesso!')
-                res.redirect('/user/profile/address')              
+            if(erros.length>0){
+                console.log('erro ao editar endereço 1')
+                return res.render('user/editaddress',{erros})
             }
+        try{
+            if(!req.isAuthenticated()){
+                console.log('erro ao editar endereço 2')
+                return res.redirect('/user/profile/address')
+            }
+            const {end,numero,bairro,cidade,estado, cep, id}= req.body
+            console.log("ID recebido no body:", id);
+
+            const address= await Address.findById(id)
+
+            if(!address){
+                console.log('erro ao editar endereço 3')
+                return res.redirect('/user/profile/address')
+            }
+            address.end= end,
+            address.cidade= cidade,
+            address.numero= numero,
+            address.cep= cep,
+            address.bairro= bairro,
+            address.estado= estado
+
+            await address.save()
+            console.log('Endereço editado com sucesso!')
+            res.redirect('/user/profile/address')              
+            
         }catch(err){
             req.flash('error_msg','Erro ao salvar endereço')
             console.log('erro ao editar endereço',err)
