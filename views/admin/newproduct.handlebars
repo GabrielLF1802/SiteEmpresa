@@ -21,25 +21,26 @@
                 </div>
                 <div>
                     <input type='file' name="images" id="image" accept="image/*" multiple onchange="previewImages(event)" class="hidden">
-
-                    <div> {{!-- Div onde vai ficar o box das imagens --}}
-                        <div id="carrossel"> {{!-- Div que vai receber as imagens  --}}
+                    <div class="flex justify-center">
+                        <button type="button" onclick="document.getElementById('image').click()" class=" mt-5 text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-3 py-2 text-center me-2 mb-3 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                            + Foto
+                        </button>
+                    </div>
+                    <div id="photos" class="hidden relative w-[400px] h-[300px] overflow-hidden rounded-lg mt-5"> {{!-- Div onde vai ficar o box das imagens --}}
+                        <div id="carrossel" class="flex transition-transform duration-500"> {{!-- Div que vai receber as imagens  --}}
                             {{!-- Imagens --}}
                         </div>
-                        <button type="button" onclick="voltslide()">voltar</button>
-                        <button type="button" onclick="proxslide()">próximo</button>
+                        <button type="button" onclick="voltslide()" class="absolute top-1/2 left-2 -translate-y-1/2 bg-black/50 text-white px-3 py-1 rounded-full"><-</button>
+                        <button type="button" onclick="proxslide()" class="absolute top-1/2 right-2 -translate-y-1/2 bg-black/50 text-white px-3 py-1 rounded-full">-></button>
                     </div>
-                    <button type="button" onclick="document.getElementById('image').click()" class=" mt-5 text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-3 py-2 text-center me-2 mb-3 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                        Selecionar Foto
-                    </button>
                 </div>
                 <div class="flex justify-center">
-                    <button type="submit" class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Cadastrar Produto</button>
+                    <button type="submit" class=" mt-9 text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Cadastrar Produto</button>
                 </div>
         
         
         </form>
-        <a href="/admin/products" class="mx-auto"><button class=" mt-5 text-white bg-purple-700 hover:bg-purple-800 focus:outline-none focus:ring-4 focus:ring-purple-300 font-medium rounded-md text-sm px-5 py-2.5 text-center mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">Lista de Produtos</button></a>
+        <a href="/admin/products" class="mx-auto"><button class=" mt-2 text-white bg-purple-700 hover:bg-purple-800 focus:outline-none focus:ring-4 focus:ring-purple-300 font-medium rounded-md text-sm px-5 py-2.5 text-center mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">Lista de Produtos</button></a>
     </div>
 </main>
 <script>
@@ -56,7 +57,9 @@ document.getElementById('valor').addEventListener('input',function(e){
 function previewImages(event) {
     var files = event.target.files
     const carrossel = document.getElementById('carrossel')
+    const photos = document.getElementById('photos')
     carrossel.innerHTML= ''
+    photos.className= ''
     stringIndex= 0
     Array.from(files).forEach(function(file) {
         if(file){
@@ -69,6 +72,9 @@ function previewImages(event) {
                 carrossel.appendChild(img)
             }
             reader.readAsDataURL(file)
+
+            photos.className= "relative w-[400px] h-[300px] overflow-hidden rounded-lg mt-5"
+
         }
     })
 }
