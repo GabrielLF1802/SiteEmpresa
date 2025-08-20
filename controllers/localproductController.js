@@ -9,7 +9,7 @@ class ProductController{
     async RegisterProduct(req,res){
         const erros = this.VerifErros(req.body)
         if(erros.length>0){
-            res.render('admin/newproduct',{erros})
+            return res.render('admin/newproduct',{erros})
         }
         try{
             const ProductExis= await Product.findOne({nome:req.body.nome})
@@ -22,14 +22,16 @@ class ProductController{
                 desc:req.body.desc,
                 valor:req.body.valor,
                 quant:req.body.quant,
-                image: req.file ? `/uploads/${req.file.filename}` : null
+                image: req.files ? req.files.map(file => `/uploads/${file.filename}`) : []
             })
             await newProduct.save()
             console.log('Sucesso ao salvar novo produto')
+            console.log(req.files ? req.files.map(file => `/uploads/${file.filename}`) : [])
             req.flash('success_msg','Sucesso ao salvar novo produto')
             res.redirect('/admin/newproduct')
         }catch(err){
             req.flash('error_msg','Erro ao salvar novo produto')
+            console.log('erro',err)
             res.redirect('/admin/newproduct')
         }
     }

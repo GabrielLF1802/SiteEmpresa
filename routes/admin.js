@@ -18,7 +18,7 @@ const upload = require('../config/multer')
 router.get('/newproduct', eAdmin, (req,res)=>{
     res.render('admin/newproduct')
 })
-router.post('/newproduct',eAdmin,  upload.single('image'),(req,res)=>{
+router.post('/newproduct',eAdmin,  upload.array('images',5),(req,res)=>{
     ProductController.RegisterProduct(req,res)
 })
 

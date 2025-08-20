@@ -32,6 +32,11 @@
     --color-blue-600: oklch(54.6% 0.245 262.881);
     --color-blue-700: oklch(48.8% 0.243 264.376);
     --color-blue-800: oklch(42.4% 0.199 265.638);
+    --color-purple-300: oklch(82.7% 0.119 306.383);
+    --color-purple-600: oklch(55.8% 0.288 302.321);
+    --color-purple-700: oklch(49.6% 0.265 301.924);
+    --color-purple-800: oklch(43.8% 0.218 303.724);
+    --color-purple-900: oklch(38.1% 0.176 304.987);
     --color-slate-400: oklch(70.4% 0.04 256.788);
     --color-gray-50: oklch(98.5% 0.002 247.839);
     --color-gray-100: oklch(96.7% 0.003 264.542);
@@ -286,6 +291,9 @@
   .mt-4 {
     margin-top: calc(var(--spacing) * 4);
   }
+  .mt-5 {
+    margin-top: calc(var(--spacing) * 5);
+  }
   .mt-7 {
     margin-top: calc(var(--spacing) * 7);
   }
@@ -303,6 +311,9 @@
   }
   .mb-2 {
     margin-bottom: calc(var(--spacing) * 2);
+  }
+  .mb-3 {
+    margin-bottom: calc(var(--spacing) * 3);
   }
   .mb-10 {
     margin-bottom: calc(var(--spacing) * 10);
@@ -439,6 +450,9 @@
   .w-\[350px\] {
     width: 350px;
   }
+  .w-\[400px\] {
+    width: 400px;
+  }
   .w-full {
     width: 100%;
   }
@@ -465,6 +479,9 @@
   }
   .flex-shrink {
     flex-shrink: 1;
+  }
+  .flex-shrink-0 {
+    flex-shrink: 0;
   }
   .shrink-0 {
     flex-shrink: 0;
@@ -681,6 +698,9 @@
   .bg-green-700 {
     background-color: var(--color-green-700);
   }
+  .bg-purple-700 {
+    background-color: var(--color-purple-700);
+  }
   .bg-red-500 {
     background-color: var(--color-red-500);
   }
@@ -760,6 +780,9 @@
   }
   .p-7 {
     padding: calc(var(--spacing) * 7);
+  }
+  .p-8 {
+    padding: calc(var(--spacing) * 8);
   }
   .px-1 {
     padding-inline: calc(var(--spacing) * 1);
@@ -1004,6 +1027,13 @@
       }
     }
   }
+  .hover\:bg-blue-800 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-blue-800);
+      }
+    }
+  }
   .hover\:bg-gray-100 {
     &:hover {
       @media (hover: hover) {
@@ -1022,6 +1052,13 @@
     &:hover {
       @media (hover: hover) {
         background-color: var(--color-green-800);
+      }
+    }
+  }
+  .hover\:bg-purple-800 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-purple-800);
       }
     }
   }
@@ -1168,6 +1205,11 @@
       --tw-ring-color: var(--color-lime-200);
     }
   }
+  .focus\:ring-purple-300 {
+    &:focus {
+      --tw-ring-color: var(--color-purple-300);
+    }
+  }
   .focus\:ring-red-300 {
     &:focus {
       --tw-ring-color: var(--color-red-300);
@@ -1188,11 +1230,6 @@
   .max-md\:h-\[250px\] {
     @media (width < 48rem) {
       height: 250px;
-    }
-  }
-  .max-md\:w-1\/8 {
-    @media (width < 48rem) {
-      width: calc(1/8 * 100%);
     }
   }
   .max-md\:w-2\/8 {
@@ -1446,6 +1483,11 @@
       border-color: var(--color-gray-700);
     }
   }
+  .dark\:bg-blue-600 {
+    @media (prefers-color-scheme: dark) {
+      background-color: var(--color-blue-600);
+    }
+  }
   .dark\:bg-gray-700 {
     @media (prefers-color-scheme: dark) {
       background-color: var(--color-gray-700);
@@ -1464,6 +1506,11 @@
   .dark\:bg-green-600 {
     @media (prefers-color-scheme: dark) {
       background-color: var(--color-green-600);
+    }
+  }
+  .dark\:bg-purple-600 {
+    @media (prefers-color-scheme: dark) {
+      background-color: var(--color-purple-600);
     }
   }
   .dark\:bg-red-600 {
@@ -1528,6 +1575,15 @@
       }
     }
   }
+  .dark\:hover\:bg-blue-700 {
+    @media (prefers-color-scheme: dark) {
+      &:hover {
+        @media (hover: hover) {
+          background-color: var(--color-blue-700);
+        }
+      }
+    }
+  }
   .dark\:hover\:bg-gray-600 {
     @media (prefers-color-scheme: dark) {
       &:hover {
@@ -1551,6 +1607,15 @@
       &:hover {
         @media (hover: hover) {
           background-color: var(--color-green-700);
+        }
+      }
+    }
+  }
+  .dark\:hover\:bg-purple-700 {
+    @media (prefers-color-scheme: dark) {
+      &:hover {
+        @media (hover: hover) {
+          background-color: var(--color-purple-700);
         }
       }
     }
@@ -1612,6 +1677,13 @@
     @media (prefers-color-scheme: dark) {
       &:focus {
         --tw-ring-color: var(--color-green-800);
+      }
+    }
+  }
+  .dark\:focus\:ring-purple-900 {
+    @media (prefers-color-scheme: dark) {
+      &:focus {
+        --tw-ring-color: var(--color-purple-900);
       }
     }
   }

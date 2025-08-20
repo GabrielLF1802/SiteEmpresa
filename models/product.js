@@ -20,7 +20,7 @@ const Product= new Schema({
         default:0
     },
     image:{
-        type:String
+        type:[String]
     }
 })
 mongoose.model('products', Product)
