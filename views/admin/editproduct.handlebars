@@ -1,33 +1,37 @@
-<h1>EDIT PRODUCT</h1>
+<main class='flex flex-grow justify-center items-center h-full w-full bg-gray-700'>
+    <div class='grid grid-cols-1 mx-auto p-7 bg-gray-500'>
+        <h1 class='mx-auto text-center text-3xl font-medium font-serif p-8'>EDIT PRODUCT</h1>
+    
+        <form action="/admin/products/edit" method="POST" class="space-y-5 mx-auto">
+            <input type="hidden" name="id" value="{{product._id}}">
+                <div>
+                    <label for="nome">Nome do produto:</label>
+                    <input type="text" name="nome" value="{{product.nome}}" class='shadow appearance-none border rounded w-full bg-gray-300 py-2 px-3 text-black mt-1 leading-tight focus:outline-1 font-mono font-normal focus:bg-slate-400 focus:shadow-xl/20'>
+                </div>
+                <div>
+                    <label for="preco">Valor do produto:</label>
+                    <input type="text" id="valor" name="valor" value="{{product.valor}}" class='shadow appearance-none border rounded w-full bg-gray-300 py-2 px-3 text-black mt-1 leading-tight focus:outline-1 font-mono font-normal focus:bg-slate-400 focus:shadow-xl/20'>
+                </div>
+                <div>
+                    <label for="">Descrição:</label>
+                    <textarea name="desc" class='shadow appearance-none border rounded w-full bg-gray-300 py-2 px-3 text-black mt-1 leading-tight focus:outline-1 font-mono font-normal focus:bg-slate-400 focus:shadow-xl/20'>{{product.desc}}</textarea>
+    
+                </div>
+                <div>
+                    <label for="quant">Quantidade em estoque:</label>
+                    <input type="number" name="quant" value="{{product.quant}}" class='shadow appearance-none border rounded w-full bg-gray-300 py-2 px-3 text-black mt-1 leading-tight focus:outline-1 font-mono font-normal focus:bg-slate-400 focus:shadow-xl/20'>
+                </div>
+                <div class="w-[400px] h-auto ">
+                    <img src="{{product.image}} " class="w-[400px] h-auto">
+                </div>
+                <div class="flex justify-center">
+                    <button class=" mt-9 text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Salvar</button>
+                </div>
+        </form>
+        <a href="/admin/products" class="flex justify-center"><button class=" mt-2 text-white bg-purple-700 hover:bg-purple-800 focus:outline-none focus:ring-4 focus:ring-purple-300 font-medium rounded-md text-sm px-5 py-2.5 text-center mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">Lista de Produtos</button></a>
+    </div>
+</main>
 
-<form action="/admin/products/edit" method="POST">
-<input type="text" name="id" value="{{product._id}}">
-    <main>
-        <div>
-            <input type="text" name="nome" value="{{product.nome}}">
-            <label for="nome">Nome do produto:</label>
-        </div>
-        <div>
-            <input type="text" id="valor" name="valor" value="{{product.valor}}">
-            <label for="preco">Valor do produto:</label>
-        </div>
-        <div>
-            <textarea name="desc">{{product.desc}}</textarea>
-            <label for="">Descrição:</label>
-        </div>
-        <div>
-            <input type="number" name="quant" value="{{product.quant}}">
-            <label for="quant">Quantidade em estoque:</label>
-        </div>
-        <div>
-            <img src="" alt="">
-        </div>
-        <button>Salvar</button>
-    </main>
-
-
-</form>
-<a href="/admin/products"><button>Lista de Produtos</button></a>
 <script>
     document.getElementById('valor').addEventListener('input',function(e){
     let valor= e.target.value.replace(/\D/g, '')
