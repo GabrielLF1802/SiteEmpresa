@@ -21,11 +21,24 @@
                     <label for="quant">Quantidade em estoque:</label>
                     <input type="number" name="quant" value="{{product.quant}}" class='shadow appearance-none border rounded w-full bg-gray-300 py-2 px-3 text-black mt-1 leading-tight focus:outline-1 font-mono font-normal focus:bg-slate-400 focus:shadow-xl/20'>
                 </div>
-                <div class="w-[400px] h-auto ">
-                    <img src="{{product.image}} " class="w-[400px] h-auto">
+                <input type='file' name="images" id="image" accept="image/*" multiple onchange="previewImages(event)" class="hidden">            
+                <div id="photos" class=" relative w-[400px] h-[300px] overflow-hidden rounded-lg mt-5"> {{!-- Div onde vai ficar o box das imagens --}}
+                    <div id="carrossel" class="flex transition-transform duration-500 w-[400px] h-auto"> {{!-- Div que vai receber as imagens  --}}
+                            {{!-- Imagens --}}
+                        {{#each product.image}}
+                            <img src="{{this}}" alt="" class="w-[400px] h-auto object-cover flex-shrink-0">
+                        {{/each }}
+                    </div>
+                    <button type="button" onclick="voltslide()" class="absolute top-1/2 left-2 -translate-y-1/2 bg-black/50 text-white px-3 py-1 rounded-full"><-</button>
+                    <button type="button" onclick="proxslide()" class="absolute top-1/2 right-2 -translate-y-1/2 bg-black/50 text-white px-3 py-1 rounded-full">-></button>
                 </div>
                 <div class="flex justify-center">
-                    <button class=" mt-9 text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Salvar</button>
+                    <button type="button" onclick="document.getElementById('image').click()" class=" mt-5 text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-3 py-2 text-center me-2 mb-3 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        + Foto
+                    </button>
+                </div>
+                <div class="flex justify-center">
+                    <button type="submit" class=" mt-9 text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Salvar</button>
                 </div>
         </form>
         <a href="/admin/products" class="flex justify-center"><button class=" mt-2 text-white bg-purple-700 hover:bg-purple-800 focus:outline-none focus:ring-4 focus:ring-purple-300 font-medium rounded-md text-sm px-5 py-2.5 text-center mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">Lista de Produtos</button></a>
@@ -41,4 +54,59 @@
     valor= valor.replace(/\B(?=(\d{3})+(?!\d))/g, '.')
     e.target.value= valor
 })
+
+{{!-- Function para renderizar em caso de imagem nova adicionada  --}}
+
+function previewImages(event) {
+    var files = event.target.files
+    const carrossel = document.getElementById('carrossel')
+    const photos = document.getElementById('photos')
+    photos.className= ''
+    stringIndex= 0
+    Array.from(files).forEach(function(file) {
+        if(file){
+            const reader= new FileReader()
+
+            reader.onload= function(e){
+                const img= document.createElement('img')
+                img.src=e.target.result
+                img.className= 'w-[400px] h-[300px] object-cover flex-shrink-0'
+                carrossel.appendChild(img)
+            }
+            reader.readAsDataURL(file)
+
+            photos.className= "relative w-[400px] h-[300px] overflow-hidden rounded-lg mt-5"
+
+        }
+    })
+}
+
+stringIndex= 0 
+
+function updateCarrossel(){
+    const carrossel= document.getElementById('carrossel')
+    const totSlide= carrossel.children.length
+    if(totSlide>0){
+        carrossel.style.transform= `translateX(-${stringIndex * 400}px)`
+    }
+}
+
+function voltslide(){
+    const carrossel= document.getElementById('carrossel')
+    const totSlide= carrossel.children.length
+    if (totSlide>0){
+        stringIndex= (stringIndex - 1 + totSlide) % totSlide
+        updateCarrossel()
+    }
+}
+
+function proxslide(){
+    const carrossel= document.getElementById('carrossel')
+    const totSlide= carrossel.children.length
+    if(totSlide>0){
+        stringIndex= (stringIndex + 1) % totSlide
+        updateCarrossel()
+    }
+
+}
 </script>

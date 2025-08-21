@@ -1,4 +1,4 @@
-<div class=" relative flex flex-col mx-auto w-full">
+<div class=" relative flex flex-col mx-auto w-full m-5">
     <div class="text-center mt-8">
         <a href="/admin/newproduct"><button class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Adicionar produto</button>
     </a></div>
@@ -7,9 +7,25 @@
     
     <main class=" relative flex flex-grow pl-20  pt-5 pr-8 grid grid-cols-1 gap-x-2 gap-y-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 ">
         {{#each products}}
-            <div class="pt-8 w-full max-w-[240px] h-108 group relative bg-gray-500 rounded-md hover:scale-103 transform-gpu hover:shadow-lg hover:shadow-black/60"> {{!-- Bloco inteiro do produto --}}
-                <div class=" h-full flex justify-center items-center max-w-[200px] max-h-[250px] text-center p-2 mx-auto"> {{!-- Bloco da imagem --}}
-                    <img src="{{image}}" alt="{{nome}}" class=" mx-auto w-[170px] h-[200px] max-w-[170px] max-h-[200px] group-hover:opacity-65">
+            <div class=" group pt-8 w-full max-w-[240px] h-108 group relative bg-gray-500 rounded-md hover:scale-103 transform-gpu hover:shadow-lg hover:shadow-black/60"> {{!-- Bloco inteiro do produto --}}
+                <div class=" h-full flex justify-center items-center max-w-[200px] max-h-[250px] text-center p-2 mx-auto">
+                    
+                    
+                     {{!-- Bloco da imagem --}}
+                    <div id="photos_{{_id}}" class=" relative w-[400px] h-[300px] overflow-hidden mt-5">
+                        <div id="carrossel_{{_id}}" class="flex transition-transform duration-500 w-[200px] h-[200px]">
+                            {{#each image}}
+                                <img src="{{this}}"  class="group-hover:opacity-65  mx-auto w-[200px] h-[200px] max-w-[200px] max-h-[200px] group-hover:opacity-65">
+                            {{/each}}
+                        </div>
+                    {{#if (gt image.length 1)}}
+                        <div class="">
+                            <button type="button" onclick="voltslide('{{_id}}')" class=" opacity-0 group-hover:opacity-100 absolute top-1/2 left-2 -translate-y-1/2 bg-black/50 text-white px-3 py-1 rounded-full"> <- </button>
+                            <button type="button" onclick="proxslide('{{_id}}')" class="opacity-0 group-hover:opacity-100 absolute top-1/2 right-2 -translate-y-1/2 bg-black/50 text-white px-3 py-1 rounded-full"> -> </button>
+                        </div>
+                    {{/if}}
+                    </div>
+                
                 </div>
                 <div class="w-full max-w-[200px] h-auto "> {{!-- bloco dos dados do produto --}}
                     <h1 class="text-center">{{nome}}</h1>
@@ -41,5 +57,34 @@
         {{/each}}
     </main>
 </div>
+<script>
+
+stringIndex= 0
+
+function voltslide(id){
+    const carrossel= document.getElementById(`carrossel_${id}`)
+    const totSlide= carrossel.children.length
+    if(totSlide>0){
+        stringIndex= (stringIndex - 1 + totSlide) % totSlide
+        updateCarrossel(carrossel)
+    }
+
+}
+function proxslide(id){
+    const carrossel= document.getElementById(`carrossel_${id}`)
+    const totSlide= carrossel.children.length
+    if(totSlide>0){
+        stringIndex= (stringIndex + 1 ) % totSlide
+        updateCarrossel(carrossel)
+    }
+
+}
+
+function updateCarrossel(carrossel){
+        carrossel.style.transform= `translateX(-${stringIndex * 200}px)`
+    }
+
+
+</script>
 
 

@@ -27,13 +27,13 @@ router.post('/newproduct',eAdmin,  upload.array('images',5),(req,res)=>{
 router.get('/products', eAdmin, (req,res)=>{
     ProductController.ListProducts(req,res)
 })
-router.get('/products/edit/:id', eAdmin, (req,res)=>{
+router.get('/products/edit/:id', eAdmin, upload.array('images',5), (req,res)=>{
     ProductController.EditProduct(req,res)    
 })
 
 
 
-router.post('/products/edit', eAdmin, (req,res)=>{
+router.post('/products/edit', eAdmin, upload.array("images",5), (req,res)=>{
     ProductController.SaveEdit(req,res)
 })
 

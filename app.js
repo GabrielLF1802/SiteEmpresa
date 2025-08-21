@@ -17,7 +17,14 @@ const search= require('./routes/search')
 const passport= require('passport')
 require('./config/auth')(passport)
 
+// Helper Handlebars ( passar fotos de produtos )
+const exphbs = require("express-handlebars");
+const helpers = require("handlebars-helpers")();
 
+const hbs = exphbs.create({ helpers });
+
+app.engine("handlebars", hbs.engine);
+app.set("view engine", "handlebars");
 
 // Configs 
     // Session
