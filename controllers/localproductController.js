@@ -95,7 +95,8 @@ class ProductController{
                 ProductExis.nome=req.body.nome,
                 ProductExis.desc= req.body.desc,
                 ProductExis.valor= req.body.valor,
-                ProductExis.quant= req.body.quant
+                ProductExis.quant= req.body.quant,
+                
 
                 await ProductExis.save().then(()=>{
                     req.flash('success_msg','Produto Atualizado')

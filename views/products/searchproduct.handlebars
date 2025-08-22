@@ -1,6 +1,47 @@
-<h1>PRODUTOS PESQUISADOS</h1>
+<main class="w-full my-10 mx-25">
+    <h1>PRODUTOS PESQUISADOS</h1>
+    
+    <div class="grid grid-cols-5">
+        {{#each product}}
+            <h2>{{this.title}}</h2>
+            <p>{{this.description}}</p>
+            <h3>{{this.price}}</h3>
+            <div class=" relative w-[400px] h-[300px] overflow-hidden mt-5">
+                <div id="carrossel" class="flex transition-transform duration-500 w-[200px] h-[200px]">
+                    {{#each images}}
+                        <img src="{{this}}" alt="" class="group-hover:opacity-65  mx-auto w-[200px] h-[200px] max-w-[200px] max-h-[200px] group-hover:opacity-65">
+                    {{/each}}
+                </div>
+            </div>
+        
+        {{/each}}
+    </div>
 
-<nav>
+
+
+</main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{{!-- <nav>
 Filtros dos produtos
 </nav>
 <main>
@@ -8,10 +49,9 @@ Filtros dos produtos
         div de cada produto ( vai ser repetida)
     </div>
 
-
     <ul>
         <li>
             PAGINAÇÃO
         </li>
     </ul>
-</main>
+</main> --}}

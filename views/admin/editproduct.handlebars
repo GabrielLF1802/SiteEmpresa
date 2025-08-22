@@ -29,8 +29,10 @@
                             <img src="{{this}}" alt="" class="w-[400px] h-auto object-cover flex-shrink-0">
                         {{/each }}
                     </div>
+                {{#if (gt image.length 1)}}
                     <button type="button" onclick="voltslide()" class="absolute top-1/2 left-2 -translate-y-1/2 bg-black/50 text-white px-3 py-1 rounded-full"><-</button>
                     <button type="button" onclick="proxslide()" class="absolute top-1/2 right-2 -translate-y-1/2 bg-black/50 text-white px-3 py-1 rounded-full">-></button>
+                {{/if}}
                 </div>
                 <div class="flex justify-center">
                     <button type="button" onclick="document.getElementById('image').click()" class=" mt-5 text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-3 py-2 text-center me-2 mb-3 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
