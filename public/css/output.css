@@ -347,6 +347,12 @@
   .ml-8 {
     margin-left: calc(var(--spacing) * 8);
   }
+  .line-clamp-3 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
   .block {
     display: block;
   }
@@ -395,6 +401,9 @@
   .h-\[12\%\] {
     height: 12%;
   }
+  .h-\[50px\] {
+    height: 50px;
+  }
   .h-\[88vh\] {
     height: 88vh;
   }
@@ -404,8 +413,26 @@
   .h-\[200px\] {
     height: 200px;
   }
+  .h-\[220px\] {
+    height: 220px;
+  }
+  .h-\[230px\] {
+    height: 230px;
+  }
+  .h-\[250px\] {
+    height: 250px;
+  }
   .h-\[300px\] {
     height: 300px;
+  }
+  .h-\[380px\] {
+    height: 380px;
+  }
+  .h-\[400px\] {
+    height: 400px;
+  }
+  .h-\[420px\] {
+    height: 420px;
   }
   .h-auto {
     height: auto;
@@ -416,11 +443,32 @@
   .h-screen {
     height: 100vh;
   }
+  .max-h-108 {
+    max-height: calc(var(--spacing) * 108);
+  }
+  .max-h-\[100px\] {
+    max-height: 100px;
+  }
   .max-h-\[200px\] {
     max-height: 200px;
   }
+  .max-h-\[220px\] {
+    max-height: 220px;
+  }
   .max-h-\[250px\] {
     max-height: 250px;
+  }
+  .max-h-\[300px\] {
+    max-height: 300px;
+  }
+  .max-h-\[350px\] {
+    max-height: 350px;
+  }
+  .max-h-\[360px\] {
+    max-height: 360px;
+  }
+  .max-h-\[380px\] {
+    max-height: 380px;
   }
   .min-h-screen {
     min-height: 100vh;
@@ -467,17 +515,35 @@
   .w-\[200px\] {
     width: 200px;
   }
+  .w-\[220px\] {
+    width: 220px;
+  }
+  .w-\[240px\] {
+    width: 240px;
+  }
+  .w-\[250px\] {
+    width: 250px;
+  }
+  .w-\[300px\] {
+    width: 300px;
+  }
   .w-\[350px\] {
     width: 350px;
   }
   .w-\[400px\] {
     width: 400px;
   }
+  .w-\[600px\] {
+    width: 600px;
+  }
   .w-full {
     width: 100%;
   }
   .w-screen {
     width: 100vw;
+  }
+  .max-w-\[180px\] {
+    max-width: 180px;
   }
   .max-w-\[200px\] {
     max-width: 200px;
@@ -570,6 +636,9 @@
   }
   .justify-items-center {
     justify-items: center;
+  }
+  .gap-8 {
+    gap: calc(var(--spacing) * 8);
   }
   .gap-10 {
     gap: calc(var(--spacing) * 10);
@@ -806,14 +875,23 @@
   .p-2 {
     padding: calc(var(--spacing) * 2);
   }
+  .p-3 {
+    padding: calc(var(--spacing) * 3);
+  }
   .p-4 {
     padding: calc(var(--spacing) * 4);
+  }
+  .p-5 {
+    padding: calc(var(--spacing) * 5);
   }
   .p-7 {
     padding: calc(var(--spacing) * 7);
   }
   .p-8 {
     padding: calc(var(--spacing) * 8);
+  }
+  .p-10 {
+    padding: calc(var(--spacing) * 10);
   }
   .px-1 {
     padding-inline: calc(var(--spacing) * 1);
