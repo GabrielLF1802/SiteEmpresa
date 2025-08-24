@@ -1,23 +1,31 @@
-<main class="w-full flex flex-grow my-10 mx-25">
+<main class="w-full flex flex-grow my-10 ">
     
-    <div class="grid grid-cols-5 gap-8">
+    <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mx-auto">
         {{#each product}}
-                <div class=" group grid grid-cols-1 p-5 w-[250px] h-[420px] bg-gray-500 rounded-md hover:scale-103 transform-gpu h:shadow-lg hover:shadow-black/60">
-                    <div class="flex justify-center items-center w-full mx-auto h-[250px] text-center p-2">
+                <div class=" group p-5 w-[250px] h-[420px] max-sm:w-[200px] bg-gray-500 rounded-md hover:scale-103 transform-gpu h:shadow-lg hover:shadow-black/60">
+                    <div class="h-full flex justify-center items-center max-w-[200px] max-h-[250px] text-center p-2 mx-auto">
                         <div class=" relative w-[220px] h-[200px] overflow-hidden mt-5">
-                            <div id="carrossel" class="items-center justify-center transition-transform duration-500 w-full h-full">
+                            <div id="carrossel_{{this.id}}" class="flex transition-transform duration-500 w-full h-full">
                                 {{#each images}}
                                     <img src="{{this}}" alt="" class="group-hover:opacity-65 w-full h-full group-hover:opacity-65">
                                 {{/each}}
                             </div>
+                        {{#if (gt images.length 1)}}
+                            <button type="button" onclick="voltimage('{{this.id}}')" class="absolute opacity-0 group-hover:opacity-100 absolute top-1/2 left-2 -translate-y-1/2 bg-black/50 text-white px-3 py-1 rounded-full"> <- </button>
+                            <button type="button" onclick="proximage('{{this.id}}')" class="absolute opacity-0 group-hover:opacity-100 absolute top-1/2 right-2 -translate-y-1/2 bg-black/50 text-white px-3 py-1 rounded-full"> -> </button>
+                        {{/if}}
                         </div>
                     </div>
                     <div class="w-full h-auto mt-5">
                         <h2 class="truncate box w-full text-center">{{this.title}}</h2>
-                        <p>{{this.availabilityStatus}}</p>
-                        <p>{{this.discountPercentage}}%</p>
-                        <p>{{this.rating}}stars</p>
-                        <h3>{{this.price}}</h3>
+                        <div class="grid grid-cols-2 gap-7 mt-3">
+                            <p>{{this.availabilityStatus}}</p>
+                            <p>{{this.rating}}⭐</p>
+                        </div>
+                        <div class="flex p-5">
+                            <h3>{{this.price}}</h3>
+                            <p>{{this.discountPercentage}}% off</p>
+                        </div>
                     </div>
                 </div>
         
@@ -27,6 +35,36 @@
 
 
 </main>
+<script>
+
+imageIndex= 0
+
+function voltimage(id){
+    const carrossel= document.getElementById(`carrossel_${id}`)
+    const totImage= carrossel.children.length
+    if(totImage>0){
+        imageIndex= (imageIndex - 1 + totImage) % totImage
+        upgradeImage(carrossel)
+    }
+}
+
+function proximage(id){
+    const carrossel= document.getElementById(`carrossel_${id}`)
+    const totImage= carrossel.children.length
+    if(totImage>0){
+        imageIndex= (imageIndex + 1) % totImage
+        upgradeImage(carrossel)
+    }
+}
+
+function upgradeImage(carrossel){
+    carrossel.style.transform= `translateX(-${imageIndex * 180}px)`
+
+}
+
+
+
+</script>
 
 
 
