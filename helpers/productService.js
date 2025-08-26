@@ -14,6 +14,11 @@ class Service{
 
         return response.data.products
     }
+    async changeProduct(unic){
+        const response= await axios.get(`https://dummyjson.com/products/${unic}`)
+
+        return response.data
+    }
 }
 
 module.exports = new Service()

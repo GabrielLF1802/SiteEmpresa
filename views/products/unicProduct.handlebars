@@ -1,0 +1,39 @@
+
+<div class="grid grid-cols-5 w-full h-full m-12">
+    {{#if (gt product.images.length 1)}}
+        <div class="grid grid-cols-2 gap-7 col-span-3">
+            {{#each product.images}}
+                <img src="{{this}}" alt="" class="bg-black">
+            {{/each}}
+        </div>
+    {{else}}
+        <div class="grid grid-cols-1 w-full col-span-3">
+            <img src="{{product.images}}" alt="" class="bg-black">
+        </div>
+    {{/if}}
+
+
+
+
+    <div class="w-full p-10 text-center col-span-2 space-y-7">
+        <h1 class="font-serif text-3xl">{{product.title}}</h1>
+        <h2 class="text-xl tracking-tight text-gray-900">R$ {{product.price}}</h2>
+        <p class="text-md bg-gray-300 font-bold">Estoque: {{product.stock}}</p>
+        <h3 class="font-normal text-xl">Descrição</h2>
+        <p class="font-medium text-sm">{{product.description}}</p>
+        <p class="font-normal text-lg">Sku: {{product.sku}}</p>
+        <div class="grid grid-cols-1 ">
+            <button class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Comprar</button>
+            <button class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">🛒</button>
+        </div>
+    </div>
+    <div class="col-span-5 space-y-5 pt-7 w-full bg-gray-500">
+        {{#each product.images}}
+            <img src="{{this}}" alt="" class="bg-black mx-auto">
+        {{/each}}
+    </div>
+
+
+
+
+</div>

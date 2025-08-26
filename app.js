@@ -21,7 +21,11 @@ require('./config/auth')(passport)
 const exphbs = require("express-handlebars");
 const helpers = require("handlebars-helpers")();
 
-const hbs = exphbs.create({ helpers });
+const hbs = exphbs.create({
+  helpers: {
+    gt: (a, b) => a > b
+  }
+})
 
 app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");

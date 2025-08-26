@@ -1,38 +1,37 @@
 <main class="w-full flex flex-grow my-10 ">
-    
-    <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mx-auto">
-        {{#each product}}
-                <div class=" group p-5 w-[250px] h-auto max-sm:w-[250px] bg-gray-500 rounded-md hover:scale-103 transform-gpu h:shadow-lg hover:shadow-black/60">
-                    <div class="h-full flex justify-center items-center max-w-[200px] max-h-[250px] text-center p-2 mx-auto">
-                        <div class=" relative w-[220px] h-[200px] overflow-hidden mt-5">
-                            <div id="carrossel_{{this.id}}" class="flex transition-transform duration-500 w-full h-full">
-                                {{#each images}}
-                                    <img src="{{this}}" alt="" class="group-hover:opacity-65 w-full h-full group-hover:opacity-65">
-                                {{/each}}
+        <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mx-auto">
+            {{#each product}}
+                    <form action="/search/product/unic" method="GET" class=" group p-5 w-[250px] h-auto max-sm:w-[250px] bg-gray-500 rounded-md hover:scale-103 transform-gpu h:shadow-lg hover:shadow-black/60" onclick="this.submit()">
+                        <input type="hidden" value="{{this.id}}" name="id">
+                        <div class="h-full flex justify-center items-center max-w-[200px] max-h-[250px] text-center p-2 mx-auto">
+                            <div class=" relative w-[220px] h-[200px] overflow-hidden mt-5">
+                                <div id="carrossel_{{this.id}}" class="flex transition-transform duration-500 w-full h-full">
+                                    {{#each images}}
+                                        <img src="{{this}}" alt="" class="group-hover:opacity-65 w-full h-full group-hover:opacity-65">
+                                    {{/each}}
+                                </div>
+                            {{#if (gt images.length 1)}}
+                                <button type="button" onclick=" event.stopPropagation(); voltimage('{{this.id}}')" class="absolute opacity-0 group-hover:opacity-100 absolute top-1/2 left-2 -translate-y-1/2 bg-black/50 text-white px-1 py-3"> < </button>
+                                <button type="button" onclick="event.stopPropagation(); proximage('{{this.id}}')" class="absolute opacity-0 group-hover:opacity-100 absolute top-1/2 right-2 -translate-y-1/2 bg-black/50 text-white px-1 py-3 "> > </button>
+                            {{/if}}
                             </div>
-                        {{#if (gt images.length 1)}}
-                            <button type="button" onclick="voltimage('{{this.id}}')" class="absolute opacity-0 group-hover:opacity-100 absolute top-1/2 left-2 -translate-y-1/2 bg-black/50 text-white px-1 py-3"> < </button>
-                            <button type="button" onclick="proximage('{{this.id}}')" class="absolute opacity-0 group-hover:opacity-100 absolute top-1/2 right-2 -translate-y-1/2 bg-black/50 text-white px-1 py-3 "> > </button>
-                        {{/if}}
                         </div>
-                    </div>
-                    <div class="w-full h-auto mt-5">
-                        <h2 class="truncate box w-full text-center">{{this.title}}</h2>
-                        <div class="flex justify-center items-center mt-3 w-full">
-                            <p class="text-xl font-large text-end font-bold w-[60%]">{{this.rating}}⭐</p>
-                            <p class="font-mono text-sm p-1 font-medium bg-green-500 rounded-xl w-auto  ">{{this.availabilityStatus}}</p>
+                        <div class="w-full h-auto mt-5"> 
+                            <h2 class="truncate box w-full text-center font-serif">{{this.title}}</h2>
+                            <div class="flex justify-center items-center mt-3 w-full">
+                                <p class="text-xl font-large text-end font-bold w-[60%]">{{this.rating}}⭐</p>
+                                <p class="font-mono text-sm p-1 font-medium bg-green-500 rounded-xl w-auto  ">{{this.availabilityStatus}}</p>
+                            </div>
+                            <div class="flex mt-3 max-h-full w-full">
+                                <h3 class="font-mono text-xl font-bold text-center w-full">R${{this.price}}</h3>
+                            </div>
+                            <div class=" w-full">
+                                <p class=" text-center text-xs">{{this.discountPercentage}}% off</p>
+                            </div>
                         </div>
-                        <div class="flex mt-3 max-h-full w-full">
-                            <h3 class="font-mono text-xl font-bold text-center w-full">R${{this.price}}</h3>
-                        </div>
-                        <div class=" w-full">
-                            <p class=" text-center text-xs">{{this.discountPercentage}}% off</p>
-                        </div>
-                    </div>
-                </div>
-        
-        {{/each}}
-    </div>
+                    </form>
+            {{/each}}
+        </div>
 
 
 

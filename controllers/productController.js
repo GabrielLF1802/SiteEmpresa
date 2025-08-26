@@ -21,6 +21,21 @@ class Product{
 
 
     }
+    async changeProduct(req,res,unic){
+        try{
+            const product= await service.changeProduct(unic)
+            if(!product){
+                console.log('Não foi possível abrir esse produto')
+                req.flash('error_msg','Não foi possível carregar esse produto')
+            }
+            res.render('products/unicProduct',{product:product})
+        }catch(err){
+            req.flash('error_msg','Erro ao carregar o produto', err)
+            console.log(err)
+        }
+        
+
+    }
 }
 
 
